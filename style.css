@@ -1309,6 +1309,11 @@ body.about-active #hanging-id-card {
   object-fit: contain;
 }
 
+/* === Global Visibility Control === */
+.mobile-splash {
+  display: none !important; /* Hide on desktop by default */
+}
+
 /* === RESPONSIVE REDESIGN (MOBILE-ONLY Overrides) === */
 @media (max-width: 1024px) {
   #container {
@@ -1410,6 +1415,80 @@ body.about-active #hanging-id-card {
   img[alt="Figma Toolbar"] {
     display: none !important; /* Hide secondary toolbars on mobile for clarity */
   }
+
+  /* --- Mobile Splash Screen (Visible on Mobile) --- */
+  .mobile-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1a1715;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    transition: opacity 0.5s ease;
+  }
+
+  .splash-content {
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .splash-icon {
+    margin-bottom: 10px;
+    animation: splashPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes splashPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .splash-content h2 {
+    font-family: 'Stranger Things', sans-serif;
+    color: #e50914;
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  }
+
+  .splash-content p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0;
+  }
+
+  .splash-btn {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .splash-btn:active {
+    transform: scale(0.95);
+    background: #b20710;
+  }
+
 
   /* --- Mini Music Player (Mobile: Vinyl-Only Model) --- */
   .mini-player {
@@ -1635,83 +1714,3 @@ body.about-active #hanging-id-card {
   .nav-item span {
     display: none; /* Hide labels for a minimalist icon-only mobile nav */
   }
-
-  /* === Mobile Splash Screen Styling === */
-  .mobile-splash {
-    display: none; /* Default hidden for desktop */
-  }
-}
-
-@media (max-width: 1024px) {
-  .mobile-splash {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #1a1715;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: center;
-    color: #fff;
-    transition: opacity 0.5s ease;
-  }
-
-  .splash-content {
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .splash-icon {
-    margin-bottom: 10px;
-    animation: splashPulse 2s infinite ease-in-out;
-  }
-
-  @keyframes splashPulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-  }
-
-  .splash-content h2 {
-    font-family: 'Stranger Things', sans-serif;
-    color: #e50914;
-    font-size: 2rem;
-    margin: 0;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
-  }
-
-  .splash-content p {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #ccc;
-    margin: 0;
-  }
-
-  .splash-btn {
-    background: #e50914;
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-
-  .splash-btn:active {
-    transform: scale(0.95);
-    background: #b20710;
-  }
-}
