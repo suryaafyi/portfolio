@@ -576,9 +576,31 @@ body::-webkit-scrollbar {
 }
 
 body.work-active #virtual-cursors-container,
+body.about-active #virtual-cursors-container,
 body.contact-active #virtual-cursors-container {
   opacity: 1;
 }
+
+/* Hide workflow cursors in the Contact section */
+body.contact-active #cursor-you,
+body.contact-active #cursor-surya {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
+/* Show only the Demogorgon cursor in the Contact section */
+body.contact-active .demogorgon-cursor {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+/* Hide Demogorgon everywhere else cursors are active */
+body.work-active .demogorgon-cursor,
+body.about-active .demogorgon-cursor {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
 
 .work-container {
   padding: 100px 100px;
