@@ -1333,8 +1333,9 @@ body.about-active #hanging-id-card {
 
 /* === Global Visibility Control === */
 .mobile-splash {
-  display: none !important; /* Hide on desktop by default */
+  display: none; /* Default hidden for desktop */
 }
+
 
 /* === RESPONSIVE REDESIGN (MOBILE-ONLY Overrides) === */
 @media (max-width: 1024px) {
@@ -1447,7 +1448,7 @@ body.about-active #hanging-id-card {
     height: 100vh;
     background: #1a1715;
     z-index: 9999;
-    display: flex;
+    display: flex !important; /* Force visibility on mobile */
     align-items: center;
     justify-content: center;
     padding: 30px;
@@ -1455,6 +1456,7 @@ body.about-active #hanging-id-card {
     text-align: center;
     color: #fff;
     transition: opacity 0.5s ease;
+
   }
 
   .splash-content {
