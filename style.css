@@ -1309,13 +1309,409 @@ body.about-active #hanging-id-card {
   object-fit: contain;
 }
 
-body.contact-active .demogorgon-cursor {
-  opacity: 1 !important;
+/* === RESPONSIVE REDESIGN (MOBILE-ONLY Overrides) === */
+@media (max-width: 1024px) {
+  #container {
+    width: 100%;
+    margin: 0;
+    transform: none !important;
+  }
+
+  .page-section {
+    height: auto;
+    min-height: auto; /* Remove fixed-screen height for fluid mobile flow */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- Hero / Home Section --- */
+  #home-section {
+    padding-top: 40px;
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .hero-text {
+    position: relative;
+    top: 0;
+    z-index: 10;
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 5rem; /* Scaled down for mobile readability */
+    margin-bottom: 20px;
+  }
+
+  .hero-text .role {
+    font-size: 1.1rem;
+  }
+
+  .hero-text .description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  /* Re-composing 'Scattered Objects' for Mobile Spatial feel */
+  .interactive-object {
+    position: absolute;
+    transform: scale(0.6) !important; /* Smaller objects on mobile */
+  }
+
+  /* Specific mobile positions for that 'Jackie Hu' framed look */
+  img[alt="Wireframe"] {
+    left: -80px !important;
+    top: -20px !important;
+    width: 300px !important;
+    transform: rotate(-10deg) scale(0.6) !important;
+  }
+
+  img[alt="Coffee"] {
+    left: auto !important;
+    right: -40px !important;
+    top: 0 !important;
+    width: 180px !important;
+    transform: rotate(15deg) scale(0.6) !important;
+  }
+
+  .folder-group {
+    left: auto !important;
+    right: 20px !important;
+    top: 320px !important;
+    width: 100px !important;
+    height: 80px !important;
+  }
+
+  img[alt="Apple Pen"] {
+    left: -30px !important;
+    top: 340px !important;
+    width: 180px !important;
+    transform: rotate(-35deg) scale(0.6) !important;
+  }
+
+  img[alt="Error Msg"] {
+    left: 10px !important;
+    top: 520px !important;
+    width: 200px !important;
+  }
+
+  img[alt="Colors"] {
+    left: auto !important;
+    right: -20px !important;
+    top: 540px !important;
+    width: 200px !important;
+  }
+
+  img[alt="PS Toolbar"], 
+  img[alt="Paint Toolbar"],
+  img[alt="Figma Toolbar"] {
+    display: none !important; /* Hide secondary toolbars on mobile for clarity */
+  }
+
+  /* --- Mini Music Player (Mobile: Vinyl-Only Model) --- */
+  .mini-player {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 40px auto 20px auto;
+    width: 180px; /* Compact size for vinyl-only */
+    height: 180px;
+    background: transparent; /* Remove background card */
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .mini-player::before {
+    display: none; /* Remove inner recessed area */
+  }
+
+  .vinyl-container {
+    width: 100%;
+    height: 100%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .vinyl-record {
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 1;
+  }
+
+  .player-details {
+    display: flex; /* Show details container but hide the info text/progress */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  /* Hide the text info and bar specifically, leaving buttons visible */
+  .track-header, .track-meta, .progress-bar, .player-screen {
+    display: none !important;
+  }
+
+  .player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  .player-controls .ctrl-btn {
+    pointer-events: auto;
+    color: white !important;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .play-btn {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  #shuffle-btn, #repeat-btn {
+    display: none !important;
+  }
+
+  .tonearm { display: none; } /* Clear logic for mobile */
+
+  /* --- Work Section (Mobile) --- */
+  .work-container {
+    padding: 20px 10px;
+    width: 100%;
+  }
+
+  .work-header {
+    font-size: 1.5rem;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .project-cards {
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .project-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    background: #fff;
+    transform: none !important; /* Disable slide animations for stability on mobile scroll */
+    opacity: 1 !important;
+  }
+
+  .mockup-gallery {
+    display: none; /* Hide hover mockups on mobile */
+  }
+
+  /* --- About Section (Mobile) --- */
+  #about-section {
+    flex-direction: column;
+    margin-bottom: 40px; /* Further reduced from 100px */
+  }
+
+  .about-container {
+    padding: 10px 20px;
+    text-align: center;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .about-header {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-content {
+    font-size: 0.9rem;
+    text-align: left; /* Keep bio readable */
+  }
+
+  #hanging-id-card {
+    position: relative;
+    left: 0 !important;
+    margin: 40px auto;
+    width: 85vw !important; /* Scaled for phone screens */
+    height: auto;
+    perspective: 1200px;
+  }
+
+  .card-face img {
+    border-radius: 15px;
+  }
+
+  .flip-hint {
+    bottom: 20px;
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  /* --- Contact Section & Navigation (Mobile) --- */
+  #contact-section {
+    padding: 60px 10px 140px 10px;
+    border-radius: 0;
+  }
+
+  .contact-heading {
+    font-size: 3.8rem !important; /* Significantly reduced to prevent overlap */
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    max-width: 90%;
+  }
+
+  .mailto-pill {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    width: auto;
+    max-width: 90%;
+  }
+
+  .st-row {
+    transform: scale(0.4) !important; /* Smaller bulbs for mobile */
+    width: 200%; 
+    left: -50%;
+  }
+
+  .social-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .social-link {
+    font-size: 0.8rem !important;
+  }
+
+  .bottom-nav {
+    bottom: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 5px;
+    border-radius: 20px;
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    padding: 10px 15px;
+  }
+
+  .nav-item span {
+    display: none; /* Hide labels for a minimalist icon-only mobile nav */
+  }
+
+  /* === Mobile Splash Screen Styling === */
+  .mobile-splash {
+    display: none; /* Default hidden for desktop */
+  }
 }
 
-/* Hide other virtual cursors in contact mode */
-body.contact-active .you-cursor,
-body.contact-active .surya-cursor {
-  opacity: 0 !important;
-  pointer-events: none;
+@media (max-width: 1024px) {
+  .mobile-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1a1715;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    transition: opacity 0.5s ease;
+  }
+
+  .splash-content {
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .splash-icon {
+    margin-bottom: 10px;
+    animation: splashPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes splashPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .splash-content h2 {
+    font-family: 'Stranger Things', sans-serif;
+    color: #e50914;
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  }
+
+  .splash-content p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0;
+  }
+
+  .splash-btn {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .splash-btn:active {
+    transform: scale(0.95);
+    background: #b20710;
+  }
 }

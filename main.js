@@ -158,7 +158,8 @@ const contactSection = document.getElementById('contact-section');
 navItems.forEach(item => {
   item.addEventListener('click', () => {
     const tabName = item.querySelector('span').textContent.trim();
-    const scale = containerRect().width / 1376;
+    const isMobile = window.innerWidth <= 1024;
+    const scale = isMobile ? 1 : (containerRect().width / 1376 || 1);
 
     if (tabName === 'Work') {
       window.scrollTo({ top: workSection.offsetTop * scale, behavior: 'smooth' });
@@ -173,14 +174,15 @@ navItems.forEach(item => {
 });
 
 window.addEventListener('scroll', () => {
-  const rawScale = containerRect().width / 1376;
-  const scale = rawScale || 1; // Safety fallback
+  // Use scale 1 for mobile/tablet fluid layout, and calculated scale for desktop
+  const isMobile = window.innerWidth <= 1024;
+  const scale = isMobile ? 1 : (containerRect().width / 1376 || 1);
   const scrollY = window.scrollY;
 
   // Calculate specific trigger positions mathematically scaled to viewport
-  const workThreshold = (workSection.offsetTop * scale) - 300;
-  const aboutThreshold = (aboutSection.offsetTop * scale) - 300;
-  const contactThreshold = (contactSection.offsetTop * scale) - 300;
+  const workThreshold = (workSection.offsetTop * (isMobile ? 1 : scale)) - 300;
+  const aboutThreshold = (aboutSection.offsetTop * (isMobile ? 1 : scale)) - 300;
+  const contactThreshold = (contactSection.offsetTop * (isMobile ? 1 : scale)) - 300;
 
   let newActiveIndex = 0;
   let isWorkActive = false;
@@ -285,12 +287,16 @@ animateCursors();
 
 // Basic responsive fit behavior
 function resizeContainer() {
-  const scale = Math.min(window.innerWidth / 1376, 1);
-  container.style.transform = `scale(${scale})`;
-
-  // Transform scale doesn't resize the DOM flow organically.
-  // We explicitly push the body height out so scrolling exists smoothly.
-  document.body.style.minHeight = `${container.offsetHeight * scale}px`;
+  // ONLY scale for desktop/large-screen 'web' version as requested
+  if (window.innerWidth > 1024) {
+    const scale = Math.min(window.innerWidth / 1376, 1);
+    container.style.transform = `scale(${scale})`;
+    document.body.style.minHeight = `${container.offsetHeight * scale}px`;
+  } else {
+    // Reset for mobile/tablet to use native fluid CSS
+    container.style.transform = 'none';
+    document.body.style.minHeight = 'auto';
+  }
 }
 
 window.addEventListener('resize', resizeContainer);
@@ -429,3 +435,16 @@ function buildStrangerWall() {
 
 // Initialize
 buildStrangerWall();
+
+// ==== Mobile Splash Dismissal ====
+const splash = document.getElementById('mobile-splash');
+const dismissBtn = document.getElementById('dismiss-splash');
+
+if (splash && dismissBtn) {
+  dismissBtn.addEventListener('click', () => {
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.style.display = 'none';
+    }, 500);
+  });
+}
