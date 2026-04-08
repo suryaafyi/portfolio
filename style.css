@@ -1,0 +1,1321 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f6f1;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+  /* Hide scrollbar for a seamless app-like aesthetic */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+#container {
+  width: 1376px;
+  position: relative;
+  margin: 0 auto;
+  transform-origin: top center;
+}
+
+.page-section {
+  width: 100%;
+  height: 768px;
+  /* Strict height to match 1 viewport */
+  position: relative;
+}
+
+#home-section {
+  margin-bottom: 100px;
+  /* Forces spacious physical padding between the sections */
+}
+
+/* === Hero Text Setup === */
+.hero-text {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-text h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 8rem;
+  line-height: 0.9;
+  font-weight: 700;
+  color: #3b3f46;
+  /* Soft elegant dark grey/slate */
+  margin: 0 0 40px 0;
+}
+
+.hero-text .role {
+  font-family: 'Courier Prime', Courier, monospace;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0 0 5px 0;
+  letter-spacing: 0.5px;
+}
+
+.hero-text .tagline {
+  font-family: 'Courier Prime', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 35px 0;
+}
+
+.hero-text .description {
+  font-family: 'Courier Prime', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0 auto;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+
+/* === Bottom Navigation === */
+.bottom-nav {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background: #fdfcfa;
+  padding: 8px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1px solid #eae5d9;
+  gap: 5px;
+  z-index: 30;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #555;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.nav-item span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.nav-item:hover {
+  background: rgba(0, 0, 0, 0.02);
+  transform: translateY(-2px);
+  color: #222;
+}
+
+.nav-item.active {
+  background: #e5e0cf;
+  color: #222;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+
+/* === Scroll Hint Animation === */
+.scroll-hint {
+  position: absolute;
+  bottom: 0px;
+  /* Under the 768px frame so it visually sits underneath the nav */
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-bounce 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+}
+
+@keyframes scroll-bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  40% {
+    transform: translateY(-8px) translateX(-50%);
+  }
+
+  60% {
+    transform: translateY(-4px) translateX(-50%);
+  }
+}
+
+/* === Skeuomorphic Mini Music Player === */
+.mini-player {
+  position: absolute;
+  top: 30px;
+  right: -50px;
+  display: flex;
+  align-items: stretch;
+  background: #eee8d8;
+  padding: 12px;
+  border-radius: 12px;
+  /* Complex shadow for a 3D inset frame look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 2px 2px white, inset 0 0 0 2px #d5cdb5, 0 0 0 6px #786450;
+  width: 400px;
+  height: 160px;
+  z-index: 20;
+  box-sizing: border-box;
+}
+
+/* Let the player frame have an inner recessed area */
+.mini-player::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: #ebe4cf;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+.vinyl-container {
+  width: 48%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.vinyl-record {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #111;
+  position: relative;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 0 4px #000;
+  border: 4px solid #222;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The vinyl image uploaded by user */
+.vinyl-image {
+  width: 96%;
+  height: 96%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* Center dot of the vinyl */
+.vinyl-center {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #eee8d8;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.vinyl-record.spinning {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tonearm {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 4px;
+  height: 80px;
+  background: #ccc;
+  transform-origin: top center;
+  transform: rotate(-15deg);
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tonearm::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -3px;
+  width: 10px;
+  height: 16px;
+  background: #bbb;
+  border-radius: 2px;
+}
+
+/* Player Right Hand Details */
+.player-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.player-screen {
+  background: #1a1b1a;
+  /* Dark green/grey tone */
+  height: 55px;
+  border-radius: 4px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 30px;
+}
+
+.waveform span {
+  display: block;
+  width: 3px;
+  background: #ccc;
+  border-radius: 2px;
+  animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.waveform span:nth-child(even) {
+  animation-duration: 0.7s;
+}
+
+.waveform span:nth-child(3n) {
+  animation-duration: 1.2s;
+}
+
+.waveform span:nth-child(4n) {
+  animation-duration: 0.5s;
+  height: 100%;
+}
+
+/* If music isn't playing, pause waveform */
+#mini-player.paused .waveform span {
+  animation-play-state: paused;
+  height: 4px !important;
+  transition: height 0.3s ease;
+}
+
+@keyframes bounce {
+  0% {
+    height: 4px;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+/* Track information */
+.track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-meta h4 {
+  margin: 0 0 2px 0;
+  font-size: 1.05rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.track-meta p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.track-options {
+  color: #666;
+  cursor: pointer;
+}
+
+/* Progress slider */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+}
+
+.progress-bar .time {
+  font-size: 0.7rem;
+  color: #888;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.track-line {
+  flex-grow: 1;
+  height: 4px;
+  background: #d5cdb5;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.track-progress {
+  height: 100%;
+  background: #665b4c;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /* Let clicks pass to track-line */
+}
+
+.track-knob {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border-radius: 50%;
+  position: absolute;
+  right: -4px;
+  top: -2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Bottom Controls */
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.ctrl-btn.sm {
+  color: #777;
+}
+
+.ctrl-btn:hover {
+  transform: scale(1.1);
+}
+
+.play-btn {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* === Interactive Scattered Objects === */
+.interactive-object {
+  position: absolute;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.05));
+  z-index: 2;
+}
+
+.interactive-object:hover {
+  z-index: 10;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* === Folder Pop-out Feature === */
+.folder-group {
+  position: absolute;
+  cursor: pointer;
+}
+
+.folder-group .folder-item {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  z-index: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.folder-group .folder-item img,
+.folder-group .folder-item svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* On hover of the entire group, blossom the icons outward */
+.folder-group:hover .item-figma {
+  transform: translate(-50%, -170%) scale(1) rotate(5deg);
+  opacity: 1;
+}
+
+.folder-group:hover .item-framer {
+  transform: translate(60%, -120%) scale(1) rotate(20deg);
+  opacity: 1;
+}
+
+.folder-group:hover .item-redstack {
+  transform: translate(-160%, -100%) scale(1) rotate(-15deg);
+  opacity: 1;
+}
+
+/* === Mockups Display Gallery === */
+.mockup-gallery {
+  position: absolute;
+  top: 60px;
+  left: 650px;
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+}
+
+.hover-mockup {
+  position: absolute;
+  width: 150%;
+  opacity: 0;
+  transform: translateY(40px) rotate(5deg) scale(0.9);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* We use the powerful modern :has() selector to detect hovering */
+.work-container:has(.card-knot:hover)+.mockup-gallery .mockup-1 {
+  opacity: 1;
+  transform: translateY(0) rotate(-3deg) scale(1);
+}
+
+.work-container:has(.card-shift:hover)+.mockup-gallery .mockup-2 {
+  opacity: 1;
+  transform: translateY(0) rotate(4deg) scale(1.05);
+  z-index: 5;
+}
+
+.work-container:has(.card-zendo:hover)+.mockup-gallery .mockup-3 {
+  opacity: 1;
+  transform: translateY(0) rotate(-2deg) scale(1);
+  z-index: 5;
+}
+
+/* === Virtual Cursors === */
+#virtual-cursors-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  /* so cursors can fly anywhere */
+  z-index: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.work-active #virtual-cursors-container,
+body.contact-active #virtual-cursors-container {
+  opacity: 1;
+}
+
+.work-container {
+  padding: 100px 100px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.work-header {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.work-header span {
+  font-size: 0.8rem;
+}
+
+.project-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 480px;
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  background: #fcfbf9;
+  border: 1px solid #eae5d9;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+/* Smart Animate entrance on scroll into work section */
+body.work-active .project-card {
+  animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body.work-active .project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+body.work-active .project-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+body.work-active .project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-info h4 {
+  margin: 0 0 5px 0;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.card-info p {
+  margin: 0;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* === Virtual Cursors (Shapes & Layout) === */
+
+#virtual-cursors-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2147483647 !important;
+}
+
+.virtual-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  transition: opacity 0.2s ease;
+  z-index: 2147483647 !important;
+}
+
+.cursor-arrow {
+  width: 32px;
+  height: 32px;
+  transform: rotate(-10deg);
+  margin-left: -5px;
+  margin-top: -5px;
+}
+
+.cursor-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: -6px;
+  margin-left: 15px;
+}
+
+.you-cursor .cursor-pill {
+  background: #222;
+}
+
+.surya-cursor .cursor-pill {
+  background: #ff7043;
+}
+
+/* Hide default cursor on the whole page when work mode is active */
+body.work-active,
+body.work-active * {
+  cursor: none !important;
+}
+
+/* For contact section, strictly drop native pointers so the virtual demogorgon.png shines */
+body.contact-active,
+body.contact-active * {
+  cursor: none !important;
+}
+
+/* === About Section Typography & Layout === */
+#about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* RESTORE CENTER ALIGNMENT */
+  position: relative;
+  margin-bottom: 300px;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 800px;
+  /* RESTORE ORIGINAL WIDTH */
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 600px;
+  /* Forces spacing to fit footer */
+}
+
+.about-header {
+  font-family: 'Courier Prime', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+.about-content {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #333;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 8px;
+  /* Safe bounds to prevent font descenders like g and j from getting clipped */
+}
+
+/* === Negative Text Mask Effect === */
+.mask-text {
+  display: inline-block;
+  transform: translateY(110%) rotate(2deg);
+  opacity: 0;
+  transform-origin: top left;
+}
+
+body.about-active .mask-text {
+  animation: txtMaskUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body.about-active .about-content p:nth-child(1) .mask-text {
+  animation-delay: 0.1s;
+}
+
+body.about-active .about-content p:nth-child(2) .mask-text {
+  animation-delay: 0.25s;
+}
+
+body.about-active .about-content p:nth-child(3) .mask-text {
+  animation-delay: 0.4s;
+}
+
+body.about-active .about-content p:nth-child(4) .mask-text {
+  animation-delay: 0.55s;
+}
+
+body.about-active .about-content p:nth-child(5) .mask-text {
+  animation-delay: 0.7s;
+}
+
+@keyframes txtMaskUp {
+  0% {
+    transform: translateY(110%) rotate(2deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* === Hanging ID Card System === */
+#hanging-id-card {
+  position: absolute;
+  top: 0px;
+  /* Initially hidden far out of the document tree */
+  left: -80px;
+  /* Shift slightly left to avoid blocking the center */
+  width: 680px;
+  z-index: 5;
+  pointer-events: auto;
+  /* ENABLE CLICKING FOR FLIP */
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  perspective: 1000px;
+  /* Essential for 3D flip depth */
+}
+
+/* When the section hits viewport, perform the physics drop and reveal */
+body.about-active #hanging-id-card {
+  opacity: 1;
+  visibility: visible;
+  animation: dropIdCard 1.6s cubic-bezier(0.34, 1.1, 0.64, 1) forwards;
+}
+
+@keyframes dropIdCard {
+  0% {
+    top: -100px;
+  }
+
+  100% {
+    top: 40px;
+  }
+
+  /* Land lower to show more of the virtual lanyard */
+}
+
+/* The physics engine rotates the inner wrapper around a distant fulcrum */
+#hanging-id-physics {
+  width: 100%;
+  transform-origin: 50% -250px;
+  /* Creates the illusion of it being attached to a string much further above */
+  animation: swayIdCard 5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* 3D Flip Card Container */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  /* Increased to fill the 768px section height accurately */
+  text-align: center;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Toggled by Javascript - includes a horizontal shift to reveal text underneath */
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg) translateX(150px);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Masks the shine sweep */
+  border-radius: 20px;
+  /* Matches card image roundness */
+}
+
+/* Glassy Shine Sweep Effect */
+.card-face::after {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 55%,
+      rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#hanging-id-card:hover .card-face::after {
+  opacity: 1;
+  animation: shineSweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shineSweep {
+  0% {
+    top: -150%;
+    left: -150%;
+  }
+
+  100% {
+    top: 150%;
+    left: 150%;
+  }
+}
+
+.card-face img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.08));
+  display: block;
+}
+
+.card-face.back {
+  transform: rotateY(180deg);
+}
+
+/* === Liquid Glass Hint Pill === */
+.flip-hint {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#hanging-id-card:hover .flip-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes swayIdCard {
+  0% {
+    transform: rotate(-1.5deg);
+  }
+
+  100% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.about-footer {
+  margin-top: 60px;
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  color: #999;
+  letter-spacing: 0.5px;
+}
+
+/* === Contact Section === */
+@font-face {
+  font-family: 'Stranger Things';
+  src: url('/assets/fonts/stranger-things.ttf') format('truetype');
+}
+
+#contact-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  /* Remove the white space entirely */
+  padding-bottom: 150px;
+  /* Stretch the dark background inward */
+  background-color: #1a1715;
+  /* Dark basement tone */
+  overflow: hidden;
+  border-radius: 12px;
+  /* Smooth edges against the scrolling white bg */
+  color: #eaeaea;
+  cursor: url('/assets/images/demogorgon.png'), auto;
+}
+
+.contact-meta {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #c4c4c4;
+  /* Lightened for dark bg */
+  z-index: 5;
+}
+
+.contact-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  margin-top: 0;
+  pointer-events: none;
+  /* Let hovers pass through to the wall */
+}
+
+.contact-heading {
+  font-family: 'Stranger Things', sans-serif;
+  pointer-events: auto;
+  /* Re-enable for the text block */
+  font-size: 8rem;
+  font-weight: normal;
+  /* Font already has heavy weight */
+  color: #e50914;
+  /* Authentic Netflix show red */
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px rgba(229, 9, 20, 0.6), 0 0 40px rgba(229, 9, 20, 0.3);
+  /* Soft subtle glow */
+}
+
+.mailto-pill {
+  position: relative;
+  /* For avatar overlap positioning */
+  display: flex;
+  align-items: center;
+  background-color: #1c1a17;
+  /* Matches wall background closely */
+  color: #f5f5f5;
+  /* Soft off-white readability */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Subtle depth border */
+  padding: 8px 30px 8px 15px;
+  /* Adjusted left padding for the bat overlap */
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.03), 0 5px 15px rgba(0, 0, 0, 0.5);
+  /* Grounded depth */
+  pointer-events: auto;
+  /* Re-enable for the button */
+  cursor: none !important;
+}
+
+.mailto-pill:hover {
+  transform: translateY(-5px);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.03), 0 8px 25px rgba(229, 9, 20, 0.3);
+  /* Gentle red glow */
+}
+
+.avatar-circle {
+  width: 45px;
+  height: 45px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.steve-bat-img {
+  position: absolute;
+  left: -25px;
+  /* Overlaps outside the pill entirely */
+  top: -15px;
+  width: 70px;
+  height: auto;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.mailto-pill:hover .steve-bat-img {
+  transform: rotate(-5deg) scale(1.1);
+  /* Slightly reacts on pill hover */
+}
+
+.contact-footer {
+  position: absolute;
+  bottom: 200px;
+  display: flex;
+  gap: 40px;
+  font-family: 'Courier Prime', monospace;
+  z-index: 5;
+}
+
+.social-link {
+  color: #c4c4c4;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: opacity 0.2s ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* === Stranger Things Wall Mechanics === */
+.stranger-wall-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.st-wire-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.st-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  z-index: 2;
+}
+
+.st-letter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  /* Let bulbs receive hovers */
+  /* We will dynamically offset each group in JS */
+}
+
+.st-letter {
+  font-family: 'Rock Salt', cursive;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.2);
+  /* Muted, faded white/grey tone */
+  margin-top: 20px;
+  pointer-events: none;
+}
+
+.st-bulb-housing {
+  /* No longer needed as the housing is built into the PNG */
+  display: none;
+}
+
+.st-bulb {
+  width: 180px;
+  /* Massively scaled for the cinematic feel */
+  height: auto;
+  margin-bottom: -30px;
+  /* Tightly couples the bulb to the text beneath */
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+  animation: st-idle 3s infinite alternate;
+  cursor: none !important;
+  z-index: 2;
+  filter: drop-shadow(0 2px 10px var(--st-color));
+  /* Glow works flawlessly on PNG */
+}
+
+.st-bulb.hovered {
+  opacity: 1 !important;
+  transform: scale(1.3);
+  animation: st-dynamic-flare 0.25s infinite alternate !important;
+  /* Extremely hyper-dynamic */
+}
+
+@keyframes st-dynamic-flare {
+  0% {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 20px var(--st-color)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 50px var(--st-color)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.9));
+    opacity: 1;
+  }
+}
+
+.st-bulb.chaos {
+  opacity: 1 !important;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 25px var(--st-color));
+  animation: st-flicker 0.2s infinite !important;
+}
+
+.st-bulb.burst {
+  opacity: 1 !important;
+  transform: scale(1.5) !important;
+  filter: drop-shadow(0 0 50px var(--st-color)) drop-shadow(0 0 90px var(--st-color)) !important;
+  animation: none !important;
+  transition: all 0.05s ease;
+}
+
+@keyframes st-idle {
+  0% {
+    opacity: 0.4;
+    filter: drop-shadow(0 2px 8px var(--st-color));
+  }
+
+  100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 2px 18px var(--st-color));
+  }
+}
+
+@keyframes st-flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+}
+
+/* === Custom Demogorgon Cursor (Virtual Fallback) === */
+.demogorgon-cursor {
+  width: 32px;
+  /* Extremely constrained bounding box */
+  height: 32px;
+  pointer-events: none;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  /* Force flex for centering */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.demogorgon-cursor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+body.contact-active .demogorgon-cursor {
+  opacity: 1 !important;
+}
+
+/* Hide other virtual cursors in contact mode */
+body.contact-active .you-cursor,
+body.contact-active .surya-cursor {
+  opacity: 0 !important;
+  pointer-events: none;
+}

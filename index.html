@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Surya Arunachalam - Designer Portfolio</title>
+   <meta name="description" content="Portfolio of Surya Arunachalam, a creative designer." />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <!-- Using Dancing Script for the signature handwritten look, Courier Prime for monospace, Inter for sans, and Rock Salt for the Stranger Things wall -->
+   <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Rock+Salt&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+   <!-- Bottom Navigation Menu (Now Globally Fixed!) -->
+   <div class="bottom-nav">
+      <button class="nav-item active">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" width="24" height="24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+         </svg>
+         <span>Home</span>
+      </button>
+      <button class="nav-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" width="24" height="24">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+         </svg>
+         <span>Work</span>
+      </button>
+      <button class="nav-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" width="24" height="24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+         </svg>
+         <span>About</span>
+      </button>
+      <button class="nav-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" width="24" height="24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+         </svg>
+         <span>Contact</span>
+      </button>
+   </div>
+
+   <div id="container">
+
+      <!-- HOME SECTION -->
+      <section id="home-section" class="page-section">
+
+         <!-- Central Semantic Text Block -->
+         <div class="hero-text">
+            <h1>Surya<br>Arunachalam</h1>
+            <h2 class="role">Product Design</h2>
+            <h3 class="tagline">Verb & Noun</h3>
+            <p class="description">a thoughtful process of crafting experiences that engage people,<br>shape clarity,
+               and
+               spark delights.</p>
+         </div>
+
+         <!-- Functional Mini Music Player -->
+         <div id="mini-player" class="mini-player">
+            <!-- Vinyl Area -->
+            <div class="vinyl-container">
+               <div class="vinyl-record" id="vinyl-record">
+                  <!-- Placeholder for user's vinyl image -->
+                  <img src="/assets/images/vinyl_placeholder.png" alt="" class="vinyl-image" />
+                  <div class="vinyl-center"></div>
+               </div>
+               <!-- Tonearm placeholder outline using simple css shapes -->
+               <div class="tonearm"></div>
+            </div>
+
+            <!-- Details Area -->
+            <div class="player-details">
+               <!-- Screen -->
+               <div class="player-screen">
+                  <div class="waveform">
+                     <!-- Simple CSS simulated waveform -->
+                     <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+               </div>
+
+               <!-- Track Info -->
+               <div class="track-header">
+                  <div class="track-meta">
+                     <h4 id="track-title">Dracula</h4>
+                     <p id="track-artist">Tame Impala & JENNIE</p>
+                  </div>
+                  <div class="track-options">
+                     <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                        <path
+                           d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                     </svg>
+                  </div>
+               </div>
+
+               <!-- Progress -->
+               <div class="progress-bar">
+                  <span class="time" id="current-time">0:00</span>
+                  <div class="track-line" id="track-line" style="cursor: pointer;">
+                     <div class="track-progress" id="track-progress" style="width: 0%;">
+                        <div class="track-knob"></div>
+                     </div>
+                  </div>
+                  <span class="time" id="total-time">0:00</span>
+               </div>
+
+               <!-- Controls -->
+               <div class="player-controls">
+                  <button class="ctrl-btn sm" id="shuffle-btn">
+                     <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                        <path
+                           d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+                     </svg>
+                  </button>
+                  <button class="ctrl-btn" id="prev-btn">
+                     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                     </svg>
+                  </button>
+                  <button class="ctrl-btn play-btn" id="play-pause-btn">
+                     <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                        <path d="M8 5v14l11-7z" />
+                     </svg>
+                     <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"
+                        style="display: none;">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                     </svg>
+                  </button>
+                  <button class="ctrl-btn" id="next-btn">
+                     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                     </svg>
+                  </button>
+                  <button class="ctrl-btn sm" id="repeat-btn">
+                     <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+                     </svg>
+                  </button>
+               </div>
+            </div>
+            <audio id="player-audio" preload="metadata"></audio>
+         </div>
+
+   </div>
+   <!-- End Mini Player -->
+
+   <!-- Interactive objects (Place your own images here!) -->
+   <div id="interactive-wrapper">
+      <!-- Left Side -->
+      <img src="/assets/images/wireframe.png" class="interactive-object" data-sound="/assets/sounds/wireframe.mp3"
+         data-rotation="-12" style="left: -60px; top: -40px; width: 440px; transform: rotate(-12deg);"
+         alt="Wireframe" />
+      <img src="/assets/images/figmatoolbar.png" class="interactive-object" data-sound="/assets/sounds/figmatoolbar.mp3"
+         data-rotation="-5" style="left: 10px; top: 300px; width: 340px; height: 40px; transform: rotate(0.5deg);"
+         alt="Figma Toolbar" />
+      <img src="/assets/images/apple-pen.png" class="interactive-object" data-sound="/assets/sounds/apple-pen.mp3"
+         data-rotation="-35" style="left: 120px; top: 340px; width: 240px; transform: rotate(-35deg);"
+         alt="Apple Pen" />
+      <img src="/assets/images/error-msg.png" class="interactive-object" data-sound="/assets/sounds/error-msg.mp3"
+         data-rotation="8" style="left: 0px; top: 480px; width: 280px; transform: rotate(8deg);" alt="Error Msg" />
+
+      <!-- Above / Top -->
+      <img src="/assets/images/coffee.png" class="interactive-object" data-sound="/assets/sounds/coffee.mp3"
+         data-rotation="15" style="left: 750px; top: -40px; width: 220px; transform: rotate(15deg);" alt="Coffee" />
+
+      <!-- Brought folder out of the center and tucked it tightly beneath the left-side of the music player -->
+      <div class="interactive-object folder-group" data-sound="/assets/sounds/folder.mp3" data-rotation="-5"
+         style="left: 1080px; top: 240px; width: 140px; height: 110px; transform: rotate(-5deg);">
+         <!-- Pop out icons lying underneath -->
+         <div class="folder-item item-redstack">
+            <svg viewBox="0 0 24 24" width="24" height="24" style="fill:#ff4d4f">
+               <path d="M21 16.5l-9 5-9-5 9-5 9 5z" />
+               <path d="M12 16.5l-9-5 9-5 9 5-9 5z" fill="#ff7875" />
+               <path d="M12 11.5l-9-5 9-5 9 5-9 5z" fill="#ffa39e" />
+            </svg>
+         </div>
+         <div class="folder-item item-figma">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="" />
+         </div>
+         <div class="folder-item item-framer">
+            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+               <path fill="#0055FF" d="M12 0h12v12h-12z" />
+               <path fill="#00A2FF" d="M0 0h12v12h-12z" />
+               <path fill="#00A2FF" d="M12 12l-12 12v-12z" />
+            </svg>
+         </div>
+         <!-- The actual folder overlay cover -->
+         <img src="/assets/images/folder.png"
+            style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 2;"
+            alt="Folder" />
+      </div>
+      <!-- Pushed AirDrop further right -->
+      <!-- <img src="/assets/images/airdrop.png" class="interactive-object" data-sound="/assets/sounds/airdrop.mp3"
+            data-rotation="3" style="left: 1080px; top: 220px; width: 220px; transform: rotate(3deg);" alt="Airdrop" /> -->
+      <!-- Pulled colors firmly into viewport so they aren't totally sliced off -->
+      <img src="/assets/images/colors.png" class="interactive-object" data-sound="/assets/sounds/colors.mp3"
+         data-rotation="-10" style="left: 1200px; top: 400px; width: 260px; transform: rotate(10deg);" alt="Colors" />
+
+      <!-- The Vertical Toolbars (enlarged width significantly translates to extreme height for vertical images) -->
+      <img src="/assets/images/ps-toolbar.png" class="interactive-object" data-sound="/assets/sounds/ps-toolbar.mp3"
+         data-rotation="2" style="left: 1200px; top: 210px; width: 250px; transform: rotate(2deg);" alt="PS Toolbar" />
+      <img src="/assets/images/paint-toolbar.png" class="interactive-object"
+         data-sound="/assets/sounds/paint-toolbar.mp3" data-rotation="-4"
+         style="left: 1000px; top: 420px; width: 250px; transform: rotate(-4deg);" alt="Paint Toolbar" />
+   </div>
+
+   <!-- Scroll Hint Chevron -->
+   <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round">
+         <polyline points="7 13 12 18 17 13"></polyline>
+         <polyline points="7 6 12 11 17 6"></polyline>
+      </svg>
+   </div>
+
+   </section>
+
+   <!-- WORK SECTION -->
+   <section id="work-section" class="page-section">
+      <div class="work-container">
+         <!-- <div class="currently-cooking" style="background:#f0efe9; padding:40px; border-radius:12px; max-width:800px; margin-bottom:80px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.04);">
+            <h3 style="font-family:'Courier Prime', monospace; font-size:14px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:#555;">Currently Cooking</h3>
+            <p style="font-size:24px; font-weight:500; line-height:1.4; color:#222; margin-bottom:15px;">Mixing curiosity, confusion, and a bit of overthinking.</p>
+            <p style="font-size:18px; line-height:1.5; color:#666;">Trying to design something that helps people understand themselves better.<br><br>Stay tuned.</p>
+         </div> -->
+
+         <h2 class="work-header">Recently Made <span>&#9654;</span></h2>
+         <div class="project-cards">
+            <!-- Card 1 -->
+            <!-- Card 1 -->
+            <!-- PASTE BEHANCE URL FOR KNOT IN href="..." -->
+            <a href="https://www.behance.net/gallery/247113621/knot-Where-Moments-Became-Memories-UXUI-Case-study"
+               target="_blank" rel="noopener" class="project-card interactive-card card-knot"
+               style="text-decoration:none; color:inherit;">
+               <div class="card-icon"
+                  style="background:#111; color:#fff; font-weight:800; font-family:sans-serif; letter-spacing:1px;">JUST
+               </div>
+               <div class="card-info">
+                  <h4>knot</h4>
+                  <p>Private, Personal, Yours</p>
+               </div>
+            </a>
+            <!-- Card 2 -->
+            <!-- PASTE BEHANCE URL FOR SHIFT IN href="..." -->
+            <a href="https://www.behance.net/gallery/245704505/Shift-A-Career-Transition-Platform-UX-Case-Study"
+               target="_blank" rel="noopener" class="project-card interactive-card card-shift"
+               style="text-decoration:none; color:inherit;">
+               <div class="card-icon"
+                  style="background:linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);">
+                  <span style="font-size:24px;">🍳</span>
+               </div>
+               <div class="card-info">
+                  <h4>Shift</h4>
+                  <p>Navigate your career, not just chase jobs</p>
+               </div>
+            </a>
+            <!-- Card 3 -->
+            <!-- PASTE BEHANCE URL FOR ZENDO IN href="..." -->
+            <a href="https://www.behance.net/gallery/246285297/Zen-do-A-Mindful-Productivity-App-UIUX-Case-Study"
+               target="_blank" rel="noopener" class="project-card interactive-card card-zendo"
+               style="text-decoration:none; color:inherit;">
+               <div class="card-icon" style="background:linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
+                  <span style="font-size:24px;">🍦</span>
+               </div>
+               <div class="card-info">
+                  <h4>Zen do</h4>
+                  <p>Focus without burnout</p>
+               </div>
+            </a>
+         </div>
+      </div>
+
+      <!-- Hover Mockup Display Gallery -->
+      <div class="mockup-gallery">
+         <!-- REPLACE src WITH YOUR PROJECT MOCKUP IMAGE PATHS -->
+         <img src="/assets/images/mockup-knot-placeholder.png" alt="Knot Mockup" class="hover-mockup mockup-1" />
+         <img src="/assets/images/mockup-shift-placeholder.png" alt="Shift Mockup" class="hover-mockup mockup-2" />
+         <img src="/assets/images/mockup-zendo-placeholder.png" alt="Zendo Mockup" class="hover-mockup mockup-3" />
+      </div>
+
+   </section>
+
+   <!-- ABOUT SECTION -->
+   <section id="about-section" class="page-section">
+      <!-- Hanging Physical ID Card -->
+      <div id="hanging-id-card">
+         <div id="hanging-id-physics">
+            <div class="flip-card-inner">
+               <div class="card-face front">
+                  <img src="/assets/images/id-card-front.png" alt="ID Front" />
+                  <div class="flip-hint">Click to flip the card</div>
+               </div>
+               <div class="card-face back">
+                  <img src="/assets/images/id-card-back.png" alt="ID Back" />
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="about-container">
+         <h2 class="about-header"><span class="mask-text">About ⌘</span></h2>
+
+         <div class="about-content">
+            <p><span class="mask-text">I'm a product designer( he/him ) with a background in Software Engineering. I
+                  love crafting a meaningful
+                  interactions and bringing fun ideas to life. Currently based in Chennai, India.</span></p>
+
+            <p><span class="mask-text">I recently completed a UI/UX design program at HCL GUVI, where I not only
+                  acquired technical expertise
+                  but also developed a profound appreciation for the beautiful union of aesthetics and functionality and
+                  got hands-on with the entire design process.</span></p>
+
+            <p><span class="mask-text">It wasn’t just about learning tools, but about learning how to think, how to
+                  break down a problem,
+                  question decisions, and design with intent. I don’t just think about how something looks, I think
+                  about
+                  how it works, how it scales, and how it will be implemented.</span></p>
+
+            <p><span class="mask-text">I navigate the exciting world of product design, where every pixel serves a
+                  purpose. Combining a deep
+                  understanding of user experience with a knack for transforming ideas into visually stunning
+                  interfaces, I
+                  approach each project with a burning passion to craft something truly remarkable.</span></p>
+
+            <p><span class="mask-text">I design to make people smile 😊</span></p>
+         </div>
+
+         <!-- <div class="about-footer">
+            LinkedIn | Twitter (x) | E-mail: surya.design@gmail.com
+         </div> -->
+      </div>
+   </section>
+
+   <!-- CONTACT SECTION -->
+   <section id="contact-section" class="page-section">
+
+      <!-- Top Left Metadata -->
+      <!-- <div class="contact-meta">
+         Surya Arunachalam<br>
+         Product Designer
+      </div> -->
+
+      <!-- Stranger Things Interactive Alphabet Wall (Generated via JS) -->
+      <div id="st-wall" class="stranger-wall-wrapper"></div>
+
+      <!-- Center Core Layout -->
+      <div class="contact-center">
+         <h1 class="contact-heading">Get In Touch</h1>
+
+         <a href="mailto:suryaarunachalam2001@gmail.com" class="mailto-pill">
+            <div class="avatar-circle">
+               <img src="/assets/images/steve's-bat.png" class="steve-bat-img" alt="Steve's Bat" />
+            </div>
+            <span>surya.design@gmail.com</span>
+         </a>
+      </div>
+
+      <!-- Bottom Social Footers -->
+      <div class="contact-footer">
+         <!-- PASTE YOUR LINKEDIN URL inside href="..." -->
+         <a href="https://www.linkedin.com/in/surya-ux" class="social-link" target="_blank" rel="noopener">
+            <img src="/assets/images/linkedin.png" alt="LinkedIn" width="18" height="18"
+               style="margin-right:8px; vertical-align:text-bottom;" />LinkedIn
+         </a>
+
+         <!-- PASTE YOUR BEHANCE URL inside href="..." -->
+         <a href="https://www.behance.net/suryaa-fyi" class="social-link" target="_blank" rel="noopener">
+            <img src="/assets/images/behance.png" alt="Behance" width="18" height="18"
+               style="margin-right:8px; vertical-align:text-bottom;" />Behance
+         </a>
+
+         <!-- PASTE YOUR INSTAGRAM URL inside href="..." -->
+         <a href="https://www.instagram.com/ft.surxaa?igsh=MTI1eGo0bm00azBpMw%3D%3D" class="social-link" target="_blank"
+            rel="noopener">
+            <img src="/assets/images/instagram.png" alt="Instagram" width="18" height="18"
+               style="margin-right:8px; vertical-align:text-bottom;" />Instagram
+         </a>
+
+         <!-- PASTE THE LINK TO YOUR PDF RESUME inside href="..." -->
+         <a href="https://roomy-wave-043.notion.site/Surya-Arunachalam-Resume-33c21faa3b208049897dfe969dc018b1?pvs=141"
+            class="social-link" target="_blank" rel="noopener">
+            <img src="/assets/images/resume.png" alt="Resume" width="18" height="18"
+               style="margin-right:8px; vertical-align:text-bottom;" />Resume
+         </a>
+      </div>
+   </section>
+
+   </div>
+
+   <!-- Virtual Cursors Container (Now Top-Level fixed to viewport) -->
+   <div id="virtual-cursors-container">
+      <div id="cursor-demogorgon" class="virtual-cursor demogorgon-cursor">
+         <img src="/assets/images/demogorgon.png" alt="Custom Demogorgon Cursor" width="32" height="32" />
+      </div>
+      <div id="cursor-you" class="virtual-cursor you-cursor">
+         <svg class="cursor-arrow" viewBox="0 0 24 24" fill="#222">
+            <path
+               d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.84c.45 0 .67-.54.35-.85L6.35 2.86a.5.5 0 0 0-.85.35z" />
+         </svg>
+         <div class="cursor-pill">You</div>
+      </div>
+      <div id="cursor-surya" class="virtual-cursor surya-cursor">
+         <svg class="cursor-arrow" viewBox="0 0 24 24" fill="#ff7043">
+            <path
+               d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.84c.45 0 .67-.54.35-.85L6.35 2.86a.5.5 0 0 0-.85.35z" />
+         </svg>
+         <div class="cursor-pill">Surya</div>
+      </div>
+   </div>
+
+   <script type="module" src="./main.js"></script>
+</body>
+
+</html>
