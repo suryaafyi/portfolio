@@ -639,9 +639,11 @@ body.about-active .demogorgon-cursor {
   border-radius: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
-  opacity: 0;
   transform: translateX(-40px);
+  position: relative;
+  overflow: hidden; /* Ensure hint doesn't spill out during transition */
 }
+
 
 /* Smart Animate entrance on scroll into work section */
 body.work-active .project-card {
@@ -703,6 +705,46 @@ body.work-active .project-card:nth-child(3) {
   font-size: 0.85rem;
   color: #888;
 }
+
+/* --- Project Card Hint Micro-Interaction --- */
+.view-hint {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-card:hover .view-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.view-hint .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .view-hint .arrow {
+  animation: arrowMove 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes arrowMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(5px); }
+}
+
 
 /* === Virtual Cursors (Shapes & Layout) === */
 
