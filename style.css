@@ -1745,6 +1745,7 @@ body.about-active #hanging-id-card {
     padding: 10px 20px;
     width: auto;
     max-width: 90%;
+    margin-bottom: 40px; /* Added spacing to prevent overlap with socials */
   }
 
   .st-row {
