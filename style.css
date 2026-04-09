@@ -1492,6 +1492,7 @@ body.about-active #hanging-id-card {
     background: #1a1715;
     z-index: 9999;
     width: 100%; /* Changed from 100vw to prevent horizontal overlap issues */
+    height: 100vh; /* Restored full height */
     display: flex; /* Removed !important to allow JS dismissal */
     align-items: center;
 
