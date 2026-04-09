@@ -1,4 +1,8 @@
 import './style.css'
+import { inject } from '@vercel/analytics';
+
+// Initialize Vercel Web Analytics
+inject({ mode: import.meta.env.MODE === 'development' ? 'development' : 'production' });
 
 const container = document.getElementById('container');
 
