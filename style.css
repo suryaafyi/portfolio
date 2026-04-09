@@ -1490,8 +1490,9 @@ body.about-active #hanging-id-card {
     height: 100vh;
     background: #1a1715;
     z-index: 9999;
-    display: flex !important; /* Force visibility on mobile */
+    display: flex; /* Removed !important to allow JS dismissal */
     align-items: center;
+
     justify-content: center;
     padding: 30px;
     box-sizing: border-box;
@@ -1780,4 +1781,10 @@ body.about-active #hanging-id-card {
   .nav-item span {
     display: none; /* Hide labels for a minimalist icon-only mobile nav */
   }
+
+  /* Completely hide virtual cursors on mobile */
+  #virtual-cursors-container {
+    display: none !important;
+  }
 }
+
