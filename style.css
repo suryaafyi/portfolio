@@ -1787,13 +1787,7 @@ body.about-active #hanging-id-card {
   }
 
   #hanging-id-card {
-    position: relative;
-    left: 0 !important;
-    margin: 40px auto;
-    width: 85vw !important;
-    /* Scaled for phone screens */
-    height: auto;
-    perspective: 1200px;
+    display: none !important;
   }
 
   .card-face img {
