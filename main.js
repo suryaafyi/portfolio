@@ -1,10 +1,8 @@
 import './style.css'
-import { inject, track } from '@vercel/analytics';
-
-// Initialize Vercel Web Analytics
-inject({ mode: import.meta.env.MODE === 'development' ? 'development' : 'production' });
 
 // ==== Analytics Tracking Events ====
+let lastTrackedSection = 'Home';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Resume Click Tracking
   const resumeLink = document.querySelector('a.social-link img[alt="Resume"]')?.closest('a');
@@ -12,7 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     resumeLink.addEventListener('click', (e) => {
       e.preventDefault();
       const url = resumeLink.href;
-      track('Resume Clicked');
+      
+      // Google Analytics 4 Event
+      if (typeof gtag === 'function') {
+        gtag('event', 'resume_download', {
+          'event_category': 'Engagement',
+          'event_label': 'Resume Clicked'
+        });
+      }
+
       setTimeout(() => {
         window.open(url, '_blank');
       }, 150);
@@ -27,7 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = card.href;
       const projectName = card.querySelector('h4')?.textContent || 'Unknown Project';
       
-      track('Case Study Click', { project: projectName });
+      // Google Analytics 4 Event
+      if (typeof gtag === 'function') {
+        gtag('event', 'case_study_view', {
+          'project_name': projectName,
+          'event_category': 'Portfolio'
+        });
+      }
       
       setTimeout(() => {
         window.open(url, '_blank');
@@ -35,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 const container = document.getElementById('container');
 
@@ -263,7 +276,22 @@ window.addEventListener('scroll', () => {
   } else if (!isContactActive && document.body.classList.contains('contact-active')) {
     document.body.classList.remove('contact-active');
   }
+
+  // GA4 Virtual Page View Tracking
+  const sections = ['Home', 'Work', 'About', 'Contact'];
+  const currentSection = sections[newActiveIndex];
+  if (currentSection !== lastTrackedSection) {
+    lastTrackedSection = currentSection;
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', {
+        page_title: currentSection,
+        page_location: window.location.href,
+        page_path: window.location.pathname + '#' + currentSection.toLowerCase()
+      });
+    }
+  }
 });
+
 
 // ==== Virtual Cursors (Collaborative Mode) ====
 const cursorYou = document.getElementById('cursor-you');
