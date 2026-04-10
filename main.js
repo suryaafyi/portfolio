@@ -1,8 +1,40 @@
 import './style.css'
-import { inject } from '@vercel/analytics';
+import { inject, track } from '@vercel/analytics';
 
 // Initialize Vercel Web Analytics
 inject({ mode: import.meta.env.MODE === 'development' ? 'development' : 'production' });
+
+// ==== Analytics Tracking Events ====
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Resume Click Tracking
+  const resumeLink = document.querySelector('a.social-link img[alt="Resume"]')?.closest('a');
+  if (resumeLink) {
+    resumeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = resumeLink.href;
+      track('Resume Clicked');
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 150);
+    });
+  }
+
+  // 2. Case Study Click Tracking
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = card.href;
+      const projectName = card.querySelector('h4')?.textContent || 'Unknown Project';
+      
+      track('Case Study Click', { project: projectName });
+      
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 150);
+    });
+  });
+});
 
 const container = document.getElementById('container');
 
