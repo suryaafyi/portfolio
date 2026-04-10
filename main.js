@@ -293,10 +293,10 @@ window.addEventListener('scroll', () => {
 });
 
 
-// ==== Virtual Cursors (Collaborative Mode) ====
+// ==== Hybrid Cursor System (Collaborative vs. Minimalist) ====
 const cursorYou = document.getElementById('cursor-you');
 const cursorSurya = document.getElementById('cursor-surya');
-const cursorDemogorgon = document.getElementById('cursor-demogorgon');
+const customDot = document.getElementById('custom-cursor-dot');
 
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
@@ -307,19 +307,19 @@ document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 
-  // The You cursor instantly tracks the mouse
+  // 1. Update Dot Cursor (Home, About, Contact) - Centered (22px / 2 = 11)
+  if (customDot) {
+    customDot.style.transform = `translate(${mouseX - 11}px, ${mouseY - 11}px)`;
+  }
+
+  // 2. Update 'You' Cursor (Work Section Only)
   if (cursorYou) {
     cursorYou.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
   }
-  // The Demogorgon cursor also instantly tracks BUT is centered (-50%, -50%)
-  if (cursorDemogorgon) {
-    cursorDemogorgon.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-  }
 
-  // ID Card Parallax
+  // ID Card Parallax (About Section)
   const idPhysics = document.getElementById('hanging-id-physics');
   if (idPhysics && document.body.classList.contains('about-active')) {
-    // Subtle tilt: +/- 2 degrees, slight pan +/- 4px
     const tiltX = (mouseX / window.innerWidth - 0.5) * 4; 
     const panX = (mouseX / window.innerWidth - 0.5) * -8;
     const panY = (mouseY / window.innerHeight - 0.5) * -8;
@@ -366,149 +366,145 @@ function resizeContainer() {
 window.addEventListener('resize', resizeContainer);
 resizeContainer();
 
-// ==== Stranger Things Alphabet Wall Mechanics ====
-function buildStrangerWall() {
-  const stWall = document.getElementById('st-wall');
-  if (!stWall) return;
+// ==== Contact Interaction Handlers ====
+function initContactInteraction() {
+  const characterLayer = document.getElementById('contact-character-group');
+  const catLayer = document.getElementById('cat-interaction-group');
+  
+  // Character (Boy/Resume) Hover
+  if (characterLayer) {
+    characterLayer.addEventListener('mouseenter', () => characterLayer.classList.add('active-hover'));
+    characterLayer.addEventListener('mouseleave', () => characterLayer.classList.remove('active-hover'));
+  }
 
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const rows = [
-    { start: 0, end: 8, yOffset: 120 },    // A-H
-    { start: 8, end: 17, yOffset: 290 },   // I-Q
-    { start: 17, end: 26, yOffset: 460 }   // R-Z
-  ];
-
-  // Authentic bulb image references and light colors
-  const lightTypes = [
-    { color: '#ff2a2a', img: 'red-light.png' },
-    { color: '#2a75ff', img: 'blue-light.png' },
-    { color: '#ffeb3b', img: 'yellow-light.png' },
-    { color: '#4caf50', img: 'green-light.png' },
-    { color: '#ff4081', img: 'pink-light.png' }
-  ];
-
-  const allBulbs = [];
-
-  rows.forEach((rowConfig) => {
-    // 1. Create Row Wrapper
-    const rowEl = document.createElement('div');
-    rowEl.className = 'st-row';
-    rowEl.style.top = `${rowConfig.yOffset}px`;
-
-    const rowLetters = alphabet.substring(rowConfig.start, rowConfig.end);
-    let rowHTML = '';
-
-    // Create each letter group
-    for (let i = 0; i < rowLetters.length; i++) {
-      const letter = rowLetters[i];
-      const light = lightTypes[(rowConfig.start + i) % lightTypes.length];
-      const verticalJitter = (Math.random() * 30) - 15; // Random up/down offset for organic look
-
-      rowHTML += `
-        <div class="st-letter-group" style="transform: translateY(${verticalJitter}px)">
-          <div class="st-bulb-housing"></div>
-          <img src="/assets/images/${light.img}" class="st-bulb" style="--st-color: ${light.color};" data-index="${rowConfig.start + i}" alt="" />
-          <div class="st-letter">${letter}</div>
-        </div>
-      `;
-    }
-
-    rowEl.innerHTML = rowHTML;
-    stWall.appendChild(rowEl);
-
-    // 2. Add structural wiring (Draw SVG path behind the row)
-    // We simply draw a loose bezier curve simulating a sagging wire across the row.
-    const wireStr = `
-      <svg class="st-wire-layer" width="100%" height="800" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 100,${rowConfig.yOffset + 10} Q 688,${rowConfig.yOffset + 120} 1276,${rowConfig.yOffset - 10}" 
-              fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-    `;
-    stWall.insertAdjacentHTML('afterbegin', wireStr);
-  });
-
-  // Collect all newly created bulbs for interaction handling
-  const bulbNodes = document.querySelectorAll('.st-bulb');
-
-  const singleFlickerSound = new Audio('/assets/sounds/light-flicker.mp3');
-  singleFlickerSound.volume = 0.3;
-
-  bulbNodes.forEach(b => {
-    allBulbs.push(b);
-    // Interaction 1: Direct light hover
-    b.addEventListener('mouseenter', () => {
-      b.classList.add('hovered');
-      singleFlickerSound.currentTime = 0;
-      singleFlickerSound.play().catch(e => { });
-    });
-    b.addEventListener('mouseleave', () => b.classList.remove('hovered'));
-  });
-
-  // Interaction 2 & 3: Email hover "Chaos" and Click "Burst"
-  const mailToPill = document.querySelector('.mailto-pill');
-  let chaosInterval;
-
-  const rapidFlickerSound = new Audio('/assets/sounds/lights-flickering.mp3');
-  rapidFlickerSound.volume = 0.4;
-  rapidFlickerSound.loop = true; // Loops infinitely while hovering
-
-  const demoSound = new Audio('/assets/sounds/demo-sound.mp3');
-  demoSound.volume = 0.6;
-
-  if (mailToPill) {
-    // Chaos Hover
-    mailToPill.addEventListener('mouseenter', () => {
-      rapidFlickerSound.currentTime = 0;
-      rapidFlickerSound.play().catch(e => { });
-
-      // Fire a random sequence that chaotic flickers
-      chaosInterval = setInterval(() => {
-        // Pick random bulbs to flicker
-        allBulbs.forEach(b => b.classList.remove('chaos')); // Clear previous
-
-        const numBulbs = Math.floor(Math.random() * 6) + 3; // 3 to 8 simultaneous bulbs
-        for (let i = 0; i < numBulbs; i++) {
-          const randIdx = Math.floor(Math.random() * allBulbs.length);
-          allBulbs[randIdx].classList.add('chaos');
-        }
-      }, 100);
-    });
-
-    mailToPill.addEventListener('mouseleave', () => {
-      rapidFlickerSound.pause();
-      rapidFlickerSound.currentTime = 0;
-
-      clearInterval(chaosInterval);
-      allBulbs.forEach(b => b.classList.remove('chaos'));
-    });
-
-    // Burst Click
-    mailToPill.addEventListener('click', () => {
-      demoSound.currentTime = 0;
-      demoSound.play().catch(err => { });
-
-      allBulbs.forEach(b => b.classList.add('burst'));
-
-      // Remove burst after short sync flare
-      setTimeout(() => {
-        allBulbs.forEach(b => b.classList.remove('burst'));
-      }, 600);
-    });
+  // Cat (Say Hello) Hover
+  if (catLayer) {
+    catLayer.addEventListener('mouseenter', () => catLayer.classList.add('active-hover'));
+    catLayer.addEventListener('mouseleave', () => catLayer.classList.remove('active-hover'));
   }
 }
 
-// Initialize
-buildStrangerWall();
 
-// ==== Mobile Splash Dismissal ====
-const splash = document.getElementById('mobile-splash');
-const dismissBtn = document.getElementById('dismiss-splash');
+// ==== Resume Illustration Sync ====
+function initResumeInteraction() {
+  const resumeGroup = document.getElementById('resume-hover-trigger');
+  if (!resumeGroup) return;
 
-if (splash && dismissBtn) {
-  dismissBtn.addEventListener('click', () => {
-    splash.style.opacity = '0';
-    setTimeout(() => {
-      splash.style.display = 'none';
-    }, 500);
+  resumeGroup.addEventListener('mouseenter', () => {
+    resumeGroup.classList.add('active-resume-hover');
+  });
+
+  resumeGroup.addEventListener('mouseleave', () => {
+    resumeGroup.classList.remove('active-resume-hover');
   });
 }
+
+// Initialize
+initContactInteraction();
+initResumeInteraction();
+
+
+
+// ==== Mobile Banner Dismissal ====
+const banner = document.getElementById('mobile-banner');
+const dismissBannerBtn = document.getElementById('dismiss-banner');
+
+if (banner && dismissBannerBtn) {
+  dismissBannerBtn.addEventListener('click', () => {
+    banner.classList.add('dismissed');
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 400);
+  });
+}
+
+/* ==== Click Burst Effect ==== */
+const particleColors = ["#e8445a", "#f4a8b5", "#ffb347", "#a78bfa", "#67e8f9", "#fbbf24", "#f9a8d4"];
+
+function createClickBurst(x, y) {
+  const particleCount = 8;
+  for (let i = 0; i < particleCount; i++) {
+    const isHeart = i % 2 === 0;
+    const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+    const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.5;
+    const distance = 40 + Math.random() * 50;
+    const size = 8 + Math.random() * 6;
+
+    const p = document.createElement('div');
+    p.className = 'click-burst-particle';
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    p.style.setProperty('--burst-x', `${Math.cos(angle) * distance}px`);
+    p.style.setProperty('--burst-y', `${Math.sin(angle) * distance - 30}px`);
+
+    const svg = isHeart
+      ? `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+      : `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}"><path d="M12 0l3 9h9l-7.5 5.5L19.5 24 12 18l-7.5 6 3-9.5L0 9h9z"/></svg>`;
+
+    p.innerHTML = svg;
+    document.body.appendChild(p);
+
+    setTimeout(() => {
+      p.remove();
+    }, 800);
+  }
+}
+
+document.addEventListener('mousedown', (e) => {
+  createClickBurst(e.clientX, e.clientY);
+});
+
+/* ==== Cursor Hint Logic ==== */
+function initCursorHint() {
+  const homeSection = document.getElementById('home-section');
+  const hint = document.getElementById('cursor-hint');
+  if (!homeSection || !hint) return;
+
+  let posReady = false;
+  let isVisibleWindow = false;
+  let hasShown = false;
+  const delay = 4000;
+  const duration = 3000;
+
+  // Track cursor within Home Section
+  homeSection.addEventListener('mousemove', (e) => {
+    // For fixed positioning, we use clientX/Y
+    const x = e.clientX + 10;
+    const y = e.clientY + 10;
+    
+    hint.style.left = `${x}px`;
+    hint.style.top = `${y}px`;
+    posReady = true;
+
+    // Trigger if we are in the window and haven't shown yet
+    if (isVisibleWindow && !hasShown) {
+      hint.classList.add('show');
+      hasShown = true;
+      
+      // Auto-hide after duration
+      setTimeout(() => {
+        hint.classList.remove('show');
+      }, duration);
+    }
+  });
+
+  // Handle Visibility Window Start
+  setTimeout(() => {
+    isVisibleWindow = true;
+    
+    // If the mouse was already moving, show immediately
+    if (posReady && !hasShown) {
+      hint.classList.add('show');
+      hasShown = true;
+      
+      setTimeout(() => {
+        hint.classList.remove('show');
+      }, duration);
+    }
+  }, delay);
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+  initCursorHint();
+});

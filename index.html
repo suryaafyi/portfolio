@@ -14,36 +14,32 @@
       gtag('config', 'G-TE5W35Y46Y');
    </script>
 
-   <title>Surya Arunachalam - Designer Portfolio</title>
+   <title>Surya Arunachalam - Product Designer</title>
    <meta name="description" content="Portfolio of Surya Arunachalam, a creative designer." />
 
    <link rel="icon" type="image/png" href="/favicon.png">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <!-- Using Dancing Script for the signature handwritten look, Courier Prime for monospace, Inter for sans, and Rock Salt for the Stranger Things wall -->
+   <!-- Noto Sans for opening, Dancing Script for signature, Courier for mono, Inter for sans -->
    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Rock+Salt&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&family=Dancing+Script:wght@500;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Rock+Salt&display=swap"
       rel="stylesheet">
    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-   <!-- Mobile Splash Screen -->
-   <div id="mobile-splash" class="mobile-splash">
-      <div class="splash-content">
-         <div class="splash-icon">
-            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#e50914" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-               <line x1="8" y1="21" x2="16" y2="21"></line>
-               <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-         </div>
-         <h2>Desktop Recommended</h2>
-         <p>For the best interactive experience including the physical ID card, 3D sounds, and spatial objects, please
-            view this portfolio on a desktop.</p>
-         <button id="dismiss-splash" class="splash-btn">Continue to Mobile</button>
-      </div>
+   <!-- Opening Animation Splash -->
+   <div id="opening-splash" class="opening-splash">
+      <div id="anim-letters-wrapper"></div>
+   </div>
+
+   <!-- Mobile Recommended Banner -->
+   <div id="mobile-banner" class="mobile-banner">
+      <span class="banner-emoji">🖥️</span>
+      <p class="banner-text">
+         Best experienced on desktop — grab a bigger screen for the full experience.
+      </p>
+      <button id="dismiss-banner" class="banner-close" aria-label="Dismiss">×</button>
    </div>
 
    <!-- Bottom Navigation Menu (Now Globally Fixed!) -->
@@ -86,6 +82,8 @@
 
       <!-- HOME SECTION -->
       <section id="home-section" class="page-section">
+         <!-- Cursor Hint Element -->
+         <div id="cursor-hint" class="cursor-hint">Hover on items</div>
 
          <!-- Central Semantic Text Block -->
          <div class="hero-text">
@@ -379,64 +377,77 @@
    <!-- CONTACT SECTION -->
    <section id="contact-section" class="page-section">
 
-      <!-- Top Left Metadata -->
-      <!-- <div class="contact-meta">
-         Surya Arunachalam<br>
-         Product Designer
-      </div> -->
+      <div class="contact-split">
+         <!-- Left Column: CTA and Info -->
+         <div class="contact-left">
+            <p class="description">If the works made sense,</p>
+            <h2 class="contact-main">let's talk.</h2>
 
-      <!-- Stranger Things Interactive Alphabet Wall (Generated via JS) -->
-      <div id="st-wall" class="stranger-wall-wrapper"></div>
-
-      <!-- Center Core Layout -->
-      <div class="contact-center">
-         <h1 class="contact-heading">Get In Touch</h1>
-
-         <a href="mailto:suryaarunachalam2001@gmail.com" class="mailto-pill">
-            <div class="avatar-circle">
-               <img src="/assets/images/steve's-bat.png" class="steve-bat-img" alt="Steve's Bat" />
+            <div id="cat-interaction-group" class="cat-interaction-group">
+               <div class="cat-illustration">
+                  <img src="/assets/images/cat-default.png" class="cat-asset cat-default" alt="Cat Default" />
+                  <img src="/assets/images/cat-hover.png" class="cat-asset cat-hover" alt="Cat Hover" />
+               </div>
+               <a href="mailto:suryaarunachalam2001@gmail.com" class="say-hello-link">Say Hello! <span
+                     class="arrow">→</span></a>
             </div>
-            <span>surya.design@gmail.com</span>
-         </a>
+
+            <div class="contact-details">
+               <div class="email-row">
+                  <span class="email-address">suryaarunachalam2001@gmail.com</span>
+               </div>
+
+               <div class="social-icons-row">
+                  <a href="https://www.linkedin.com/in/surya-ux" class="social-icon-btn" target="_blank">
+                     <img src="/assets/images/linkedin.png" alt="LinkedIn" />
+                  </a>
+                  <a href="https://www.behance.net/suryaa-fyi" class="social-icon-btn" target="_blank">
+                     <img src="/assets/images/behance.png" alt="Behance" />
+                  </a>
+                  <a href="https://www.instagram.com/ft.surxaa?igsh=MTI1eGo0bm00azBpMw%3D%3D" class="social-icon-btn"
+                     target="_blank">
+                     <img src="/assets/images/instagram.png" alt="Instagram" />
+                  </a>
+                  <!-- Mobile-Only Resume Button -->
+                  <a href="https://roomy-wave-043.notion.site/Surya-Arunachalam-Resume-33c21faa3b208049897dfe969dc018b1?pvs=74"
+                     class="social-icon-btn mobile-resume-btn" target="_blank">
+                     <svg class="resume-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                     </svg>
+                  </a>
+               </div>
+            </div>
+         </div>
+
+
+         <!-- Right Column: Focus Character -->
+         <div class="contact-right" id="contact-character-group">
+            <a href="https://roomy-wave-043.notion.site/Surya-Arunachalam-Resume-33c21faa3b208049897dfe969dc018b1?pvs=74"
+               class="character-pivot" target="_blank" rel="noopener">
+               <img src="/assets/images/default.png" class="char-asset char-default" alt="Default Character" />
+               <img src="/assets/images/hover.png" class="char-asset char-hover" alt="Hover Character" />
+            </a>
+         </div>
       </div>
 
-      <!-- Bottom Social Footers -->
-      <div class="contact-footer">
-         <!-- PASTE YOUR LINKEDIN URL inside href="..." -->
-         <a href="https://www.linkedin.com/in/surya-ux" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/linkedin.png" alt="LinkedIn" width="18" height="18"
-               style="margin-right:8px; vertical-align:text-bottom;" />LinkedIn
-         </a>
-
-         <!-- PASTE YOUR BEHANCE URL inside href="..." -->
-         <a href="https://www.behance.net/suryaa-fyi" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/behance.png" alt="Behance" width="18" height="18"
-               style="margin-right:8px; vertical-align:text-bottom;" />Behance
-         </a>
-
-         <!-- PASTE YOUR INSTAGRAM URL inside href="..." -->
-         <a href="https://www.instagram.com/ft.surxaa?igsh=MTI1eGo0bm00azBpMw%3D%3D" class="social-link" target="_blank"
-            rel="noopener">
-            <img src="/assets/images/instagram.png" alt="Instagram" width="18" height="18"
-               style="margin-right:8px; vertical-align:text-bottom;" />Instagram
-         </a>
-
-         <!-- PASTE THE LINK TO YOUR PDF RESUME inside href="..." -->
-         <a href="https://roomy-wave-043.notion.site/Surya-Arunachalam-Resume-33c21faa3b208049897dfe969dc018b1?pvs=74"
-            class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/resume.png" alt="Resume" width="18" height="18"
-               style="margin-right:8px; vertical-align:text-bottom;" />Resume
-         </a>
-      </div>
+      <!-- Minimal Contact Footer -->
+      <footer class="contact-subfooter">
+         <div class="subfooter-left">
+            <span>© 2026 Surya Arunachalam. Designed & built by me</span>
+         </div>
+      </footer>
    </section>
 
    </div>
 
    <!-- Virtual Cursors Container (Now Top-Level fixed to viewport) -->
    <div id="virtual-cursors-container">
-      <div id="cursor-demogorgon" class="virtual-cursor demogorgon-cursor">
-         <img src="/assets/images/demogorgon.png" alt="Custom Demogorgon Cursor" width="32" height="32" />
-      </div>
+
       <div id="cursor-you" class="virtual-cursor you-cursor">
          <svg class="cursor-arrow" viewBox="0 0 24 24" fill="#222">
             <path
@@ -452,7 +463,10 @@
          <div class="cursor-pill">Surya</div>
       </div>
    </div>
+   <!-- Custom Minimalist Cursor Dot -->
+   <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
 
+   <script type="module" src="./opening-animation.js"></script>
    <script type="module" src="./main.js"></script>
 </body>
 
