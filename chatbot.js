@@ -66,8 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingId = showLoading();
 
     try {
+      const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:5000/chat' 
+        : '/api/chat';
+
       // Send to backend API
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

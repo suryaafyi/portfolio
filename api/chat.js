@@ -41,7 +41,7 @@ You MUST return your response as a valid JSON object matching exactly this struc
 }
 `;
 
-app.post("/chat", async (req, res) => {
+app.post(["/chat", "/api/chat"], async (req, res) => {
   const { message } = req.body;
 
   if (!message) {
@@ -104,7 +104,12 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// Vercel serverless export
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}
