@@ -1,0 +1,531 @@
+/* ==========================================================================
+   CASE STUDY MODULAR STYLES (case-study.css)
+   ========================================================================== */
+
+   :root {
+    --cs-bg: #F7F5F2; /* Soft neutral background */
+    --cs-text: #222222;
+    --cs-text-light: #555555;
+    --cs-accent: #FF7043; /* Orange accent */
+    --cs-dark-bg: #1A1A1A;
+    --cs-dark-text: #F7F5F2;
+    --cs-border: rgba(0, 0, 0, 0.08);
+  }
+  
+  .case-study-page {
+    background-color: var(--cs-bg);
+    color: var(--cs-text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* OVERRIDE GLOBAL NO-CURSOR RULE */
+  .case-study-page, .case-study-page * {
+    cursor: auto !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.2;
+    margin-top: 0;
+  }
+  
+  /* Layout Constraints */
+  .cs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  
+  /* Typography */
+  .cs-section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Sections Basics */
+  section {
+    padding: 100px 0;
+  }
+  
+  .cs-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  @media (max-width: 900px) {
+    .cs-split {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  
+  /* Top Navigation */
+  .cs-header {
+    padding: 30px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--cs-bg) 70%, transparent);
+  }
+  
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--cs-text-light);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .back-link:hover {
+    color: var(--cs-accent);
+  }
+  
+  /* 1. Hero Section */
+  .cs-hero {
+    padding-top: 40px;
+  }
+  
+  .cs-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--cs-text);
+  }
+  
+  .cs-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--cs-text-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  .cs-short-desc {
+    font-size: 1.1rem;
+    color: var(--cs-text-light);
+    margin-bottom: 3rem;
+    max-width: 90%;
+  }
+  
+  .cs-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 3rem;
+  }
+  
+  .cs-info-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cs-info-item .label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--cs-text-light);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  
+  .cs-info-item .value {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .cs-impact h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cs-impact ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cs-impact ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: var(--cs-text-light);
+  }
+  
+  .cs-impact ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--cs-accent);
+    font-weight: bold;
+  }
+  
+  .cs-explore-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: var(--cs-text);
+    font-weight: 600;
+    border-bottom: 2px solid var(--cs-accent);
+    padding-bottom: 4px;
+    transition: transform 0.3s ease;
+  }
+  
+  .cs-explore-btn:hover {
+    transform: translateY(4px);
+  }
+  
+  .cs-hero-visual .cs-img-main {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  
+  /* 2. Problem Section */
+  .cs-dark {
+    background-color: var(--cs-dark-bg);
+    color: var(--cs-dark-text);
+    padding: 100px 5%;
+  }
+  
+  .cs-problem .cs-section-title {
+    color: #fff;
+  }
+  
+  .cs-problem p {
+    color: #bbb;
+    font-size: 1.2rem;
+  }
+  
+  .cs-problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cs-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .cs-card:hover {
+    transform: translateX(-10px);
+    border-color: var(--cs-accent);
+  }
+  
+  .cs-card h4 {
+    margin-bottom: 8px;
+    color: var(--cs-accent);
+  }
+  
+  .cs-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* 3. Insights */
+  .cs-insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+  }
+  
+  .cs-insight-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid var(--cs-border);
+    position: relative;
+  }
+  
+  .cs-insight-item .cs-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--cs-accent);
+    border-radius: 50%;
+    margin-bottom: 16px;
+  }
+  
+  .cs-insight-item p {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  /* 4. Statement */
+  .cs-statement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 150px 5%;
+  }
+  
+  .cs-statement blockquote {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--cs-text);
+    max-width: 900px;
+    letter-spacing: -0.02em;
+  }
+  
+  @media (max-width: 768px) {
+    .cs-statement blockquote {
+      font-size: 2rem;
+    }
+  }
+  
+  /* 5. Solution Pillar Grid */
+  .cs-pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+  }
+  
+  .cs-pillar {
+    text-align: left;
+  }
+  
+  .cs-pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .cs-pillar h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .cs-pillar p {
+    color: var(--cs-text-light);
+    font-size: 0.95rem;
+  }
+  
+  /* 6. Decisions Scroller */
+  .cs-decisions-scroller {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 40px;
+    scrollbar-width: none; /* Firefox */
+  }
+  .cs-decisions-scroller::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .cs-decision-card {
+    min-width: 300px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--cs-border);
+    flex-shrink: 0;
+  }
+  
+  .cs-decision-card h4 {
+    font-size: 1.2rem;
+    color: var(--cs-accent);
+    margin-bottom: 16px;
+  }
+  
+  .cs-decision-card p {
+    color: var(--cs-text-light);
+    margin: 0;
+  }
+  
+  /* 7. Features Row */
+  .cs-feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 120px;
+  }
+  
+  .cs-feature-row.reverse .cs-feature-text {
+    order: 2;
+  }
+  .cs-feature-row.reverse .cs-feature-visual {
+    order: 1;
+  }
+  
+  @media (max-width: 900px) {
+    .cs-feature-row, .cs-feature-row.reverse {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+    .cs-feature-row.reverse .cs-feature-text {
+      order: 1;
+    }
+    .cs-feature-row.reverse .cs-feature-visual {
+      order: 2;
+    }
+  }
+  
+  .cs-feature-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .cs-feature-subtitle {
+    font-size: 1.2rem;
+    color: var(--cs-accent);
+    margin-bottom: 20px;
+  }
+  
+  .cs-feature-text ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cs-feature-text ul li {
+    padding-left: 24px;
+    margin-bottom: 12px;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--cs-text-light);
+  }
+  
+  .cs-feature-text ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--cs-accent);
+    font-weight: bold;
+  }
+  
+  .feature-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #e8e6e1;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: 500;
+  }
+  
+  /* 8. Testing */
+  .cs-testing {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  
+  .cs-stat-block {
+    margin-bottom: 60px;
+  }
+  
+  .cs-big-stat {
+    font-size: 6rem;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 900;
+    color: var(--cs-accent);
+    line-height: 1;
+    display: block;
+  }
+  
+  .cs-stat-label {
+    font-size: 1.2rem;
+    color: #bbb;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .cs-test-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  
+  @media (max-width: 900px) {
+    .cs-test-details {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .cs-test-col h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+  }
+  
+  .cs-test-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cs-test-col ul li {
+    color: #bbb;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+  }
+  
+  .cs-test-col ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--cs-accent);
+  }
+  
+  /* 9. Reflection */
+  .cs-reflection ul {
+    padding-left: 20px;
+  }
+  
+  .cs-reflection ul li {
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    color: var(--cs-text-light);
+  }
+  
+  /* 10. External CTA */
+  .cs-external-cta {
+    text-align: center;
+    padding: 80px 5%;
+  }
+
+  .cs-behance-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0057ff; /* Behance Blue */
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 87, 255, 0.2);
+  }
+
+  .cs-behance-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 87, 255, 0.3);
+    background: #004ae6;
+  }
+  

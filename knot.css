@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --knot-bg: #0b0b0b;
+  --knot-text: #ffffff;
+  --knot-text-muted: #888888;
+  --knot-accent: #ff6a3d;
+  --knot-surface: #161616;
+  --knot-surface-hl: #222222;
+}
+
+body.knot-cinematic {
+  background-color: var(--knot-bg);
+  color: var(--knot-text);
+  font-family: 'Libre Baskerville', serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Customize Scrollbar for dark theme */
+  scrollbar-width: thin;
+  scrollbar-color: var(--knot-surface-hl) var(--knot-bg);
+}
+
+body.knot-cinematic::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.knot-cinematic::-webkit-scrollbar-track {
+  background: var(--knot-bg);
+}
+
+body.knot-cinematic::-webkit-scrollbar-thumb {
+  background: var(--knot-surface-hl);
+  border-radius: 4px;
+}
+
+h1,
+.hero-headline,
+.huge-stat {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+.scroll-break,
+.insight-statement,
+.final-statement {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.circle-highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.circle-highlight::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 125%;
+  height: 150%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 200 100"><path d="M 15 50 C 15 10 185 10 185 50 C 185 90 15 90 15 50 C 15 35 30 15 50 15" fill="none" stroke="%23ff6a3d" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>');
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   GLOBAL UTILITIES
+   ========================================================================== */
+.knot-section {
+  position: relative;
+  width: 100vw;
+  padding: 15vh 5vw;
+  box-sizing: border-box;
+}
+
+.knot-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.knot-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--knot-accent);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* ==========================================================================
+   ACT SPECIFIC LAYOUTS
+   ========================================================================== */
+
+/* Hero */
+.hero-headline {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.hero-subtext {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: var(--knot-text-muted);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.hero-meta {
+  font-size: 0.9rem;
+  color: var(--knot-text-muted);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* Scroll Break */
+.scroll-break {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* Split Layouts (Sticky left, scrolling right) */
+.split-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 10vw;
+}
+
+@media (max-width: 900px) {
+  .split-layout {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+
+.split-left {
+  flex: 1;
+  position: sticky;
+  top: 30vh;
+}
+
+.split-right {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.split-left h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+}
+
+.split-left p {
+  font-size: 1.2rem;
+  color: var(--knot-text-muted);
+}
+
+/* Cards */
+.knot-card {
+  background: var(--knot-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 3rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.knot-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 106, 61, 0.4);
+  box-shadow: 0 10px 30px rgba(255, 106, 61, 0.1);
+}
+
+.knot-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.knot-card p {
+  font-size: 1.1rem;
+  color: var(--knot-text-muted);
+  line-height: 1.6;
+}
+
+/* Insight Act */
+.insight-statement {
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.insight-highlight {
+  color: var(--knot-accent);
+}
+
+/* Testing Act */
+.huge-stat {
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 900;
+  color: var(--knot-accent);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.stat-sub {
+  font-size: 1.5rem;
+  color: var(--knot-text-muted);
+}
+
+/* Footer Statement */
+.final-statement {
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-align: center;
+  font-weight: 900;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Micro & Utilities */
+.text-reveal-line {
+  /* For GSAP splitting or block hides */
+  overflow: hidden;
+  line-height: 1.2;
+}
+
+.gsap-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Custom Inverted Gradient Cursor */
+.knot-cinematic,
+.knot-cinematic * {
+  cursor: none !important;
+}
+
+.knot-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2));
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.knot-cursor.hovering {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--knot-accent), #fff);
+}
+
+/* Mockup Placeholders */
+.knot-mockup-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); */
+  /* background: #000000; */
+}
+
+.knot-mockup {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.knot-mockup:hover {
+  filter: grayscale(0%);
+}

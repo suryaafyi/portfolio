@@ -33,8 +33,17 @@ function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function initOpeningAnimation() {
   const splash = document.getElementById('opening-splash');
+  if (!splash) return;
+
+  // Only play the animation once per session
+  if (sessionStorage.getItem('hasSeenIntro')) {
+    splash.style.display = 'none';
+    return;
+  }
+  sessionStorage.setItem('hasSeenIntro', 'true');
+
   const wrapper = document.getElementById('anim-letters-wrapper');
-  if (!splash || !wrapper) return;
+  if (!wrapper) return;
 
   const FONT_SIZE = window.innerWidth <= 768 ? 60 : 100;
   const CENTER_X = window.innerWidth / 2;

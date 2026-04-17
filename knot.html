@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knot - Case Study | Surya Arunachalam</title>
+  <meta name="description" content="Knot: An emotion-first memory system." />
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./knot.css">
+  <link rel="stylesheet" href="./chatbot.css">
+</head>
+
+<body class="knot-cinematic">
+
+  <header class="cs-header" style="position:fixed; top:24px; left:24px; z-index:900; background:none;">
+    <a href="./index.html#work-section" class="back-link" aria-label="Back"
+      style="color:var(--knot-text-muted); padding: 12px; display: flex; align-items: center; justify-content: center;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- 🟣 HERO — THE HOOK -->
+    <section id="hero" class="knot-section knot-fullscreen">
+      <div class="knot-container">
+        <h1 class="hero-headline knot-tx">Knot is a private space to keep what matters.</h1>
+        <p class="hero-subtext knot-tx">An emotion-first memory system designed to help families capture moments, stay
+          connected, and revisit <span class="circle-highlight" style="color:var(--knot-text);">what truly
+            matters</span>, together.</p>
+        <div class="hero-meta knot-tx">UX Research · Product Design · Interaction Design · Usability Testing</div>
+      </div>
+    </section>
+
+    <!-- ⚫ SCROLL BREAK — PATTERN INTERRUPT -->
+    <section id="scroll-break" class="knot-section knot-fullscreen" style="background:#050505;">
+      <div class="knot-container">
+        <div class="scroll-break knot-tx">
+          No noise. No infinite scroll.<br>
+          <span style="color:var(--knot-text-muted);">Just memories that return when they matter.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔴 ACT 1 — THE PROBLEM (TENSION) -->
+    <section id="act-1" class="knot-section">
+      <div class="knot-container split-layout">
+        <div class="split-left">
+          <span class="eyebrow">Problem</span>
+          <h2>Memories don’t disappear.<br>They just <span class="circle-highlight">lose their place.</span></h2>
+          <p>Today, meaningful moments are scattered across apps: photos in galleries, conversations in chats, reminders
+            in calendars.</p>
+          <p>Each tool captures a piece.<br>None of them connect the story.</p>
+        </div>
+        <div class="split-right">
+          <div class="knot-card knot-tx">
+            <h3>Scattered Across Platforms</h3>
+            <p>Memories exist in silos, with no unified timeline.</p>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>Built for Sharing, Not Remembering</h3>
+            <p>Products optimize engagement—not emotional recall.</p>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>No Private Family Space</h3>
+            <p>There’s no structured environment designed for shared memories.</p>
+          </div>
+          <div class="knot-tx" style="margin-top:2rem;">
+            <p style="font-size:1.5rem; font-weight:600;">The moments that matter most become unstructured, unseen, and
+              eventually forgotten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🟡 ACT 2 — UNDERSTANDING PEOPLE (EMPATHY) -->
+    <section id="act-2" class="knot-section" style="background:#0e0e0e;">
+      <div class="knot-container split-layout">
+        <div class="split-left">
+          <span class="eyebrow">Research</span>
+          <h2>Understanding how people hold on to what matters</h2>
+          <br>
+          <p style="color:#fff; font-weight:600;">What I set out to learn</p>
+          <ul style="color:var(--knot-text-muted); line-height:1.8;">
+            <li>How people actually remember moments, not just store them</li>
+            <li>Where emotional value gets lost</li>
+            <li>Why existing tools fail during real-life use</li>
+          </ul>
+        </div>
+        <div class="split-right">
+          <div class="knot-card knot-tx">
+            <h3>What I found</h3>
+            <ul style="line-height:2; color:var(--knot-text-muted);">
+              <li>People don’t forget. They remember too late</li>
+              <li>The problem isn’t storage, it’s meaningful revisit</li>
+              <li>Privacy changes behavior. People share more in safe spaces</li>
+              <li>Current tools break emotional continuity</li>
+            </ul>
+          </div>
+          <div class="knot-tx" style="padding:4rem 0;">
+            <span class="eyebrow">The moment it clicked</span>
+            <blockquote style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:0;">
+              “People don’t just want to store memories,<br>
+              they want to feel them again, at the right time.”
+            </blockquote>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>Signals from the data</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
+              <div><strong style="font-size:3rem; color:var(--knot-accent); display:block;">72%</strong> forget
+                important personal dates</div>
+              <div><strong style="font-size:3rem; color:var(--knot-accent); display:block;">65%</strong> rely on chat
+                apps for memory sharing</div>
+              <div><strong style="font-size:3rem; color:var(--knot-accent); display:block;">58%</strong> rarely revisit
+                memories intentionally</div>
+              <div><strong style="font-size:3rem; color:var(--knot-accent); display:block;">47%</strong> feel reminders
+                lack emotional value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🟢 ACT 3 — REFRAMING THE PROBLEM (INSIGHT) -->
+    <section id="act-3" class="knot-section knot-fullscreen">
+      <div class="knot-container">
+        <span class="eyebrow" style="text-align:center;">Define</span>
+        <div class="insight-statement knot-tx">
+          The problem wasn’t forgetting.
+        </div>
+        <div class="insight-statement knot-tx" style="margin-top:2rem; font-size:clamp(1.5rem, 4vw, 3rem);">
+          People don’t forget important moments.<br>
+          <span class="insight-highlight">They miss them at the <span class="circle-highlight">wrong time.</span></span>
+        </div>
+
+        <div class="split-layout" style="margin-top:8rem;">
+          <div class="split-left knot-tx">
+            <h3>What’s broken today</h3>
+            <ul style="color:var(--knot-text-muted); line-height:2; margin-top:1rem;">
+              <li>Fragmented across platforms</li>
+              <li>Emotionally disconnected experiences</li>
+              <li>No structure for revisiting</li>
+              <li>No true sense of privacy</li>
+            </ul>
+          </div>
+          <div class="split-right knot-tx">
+            <h3>What people actually need</h3>
+            <ul style="color:var(--knot-text-muted); line-height:2; margin-top:1rem;">
+              <li>A private space for meaningful moments</li>
+              <li>Reminders that feel emotional—not functional</li>
+              <li>A natural way to revisit memories</li>
+              <li>Structure without complexity</li>
+              <li>Control over who sees what</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="knot-tx" style="margin-top:6rem; text-align:center;">
+          <span class="eyebrow">Reframing the challenge</span>
+          <p style="font-size:2rem; font-weight:700;">How might we make digital memories feel like a shared home, not a
+            collection of files?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔵 ACT 4 — THE SOLUTION (RESOLUTION) -->
+    <section id="act-4" class="knot-section" style="background:#0e0e0e;">
+      <div class="knot-container">
+        <span class="eyebrow" style="text-align:center;">Solution</span>
+        <h2 style="font-size:3rem; text-align:center; max-width:800px; margin:0 auto 2rem;">A private, emotionally
+          intelligent memory system</h2>
+        <p
+          style="text-align:center; max-width:700px; margin:0 auto 5rem; color:var(--knot-text-muted); font-size:1.2rem;">
+          Knot brings together memories, people, and time into a single connected experience, designed not just to store
+          moments, but to bring them back to life.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+          <div class="knot-card knot-tx">
+            <h3>Memory Timeline</h3>
+            <p><strong>Not just stored. Remembered.</strong><br>A chronological, emotion-rich view designed for
+              revisiting, not scrolling.</p>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>Family Graph</h3>
+            <p><strong>Your relationships, beautifully mapped.</strong><br>A living system that connects people, roles,
+              and shared memories.</p>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>Smart Nudges</h3>
+            <p><strong>Right moment. Right memory.</strong><br>Context-aware prompts that help users act, reflect, and
+              reconnect.</p>
+          </div>
+          <div class="knot-card knot-tx">
+            <h3>Family Vault</h3>
+            <p><strong>Everything important. Safely in one place.</strong><br>Secure storage for sensitive memories and
+              documents.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧩 ACT 5 — SYSTEM THINKING (DEPTH) -->
+    <section id="act-5" class="knot-section">
+      <div class="knot-container split-layout">
+        <div class="split-left">
+          <span class="eyebrow">System Design</span>
+          <h2>Designed around intent, not features</h2>
+          <p style="margin-top:2rem; font-size:1.5rem; color:var(--knot-text-muted);">From notification → to memory
+            creation → to shared interaction</p>
+          <p style="margin-top:1rem;">Each step is lightweight, guided, and intentional.</p>
+        </div>
+        <div class="split-right knot-tx">
+          <div class="knot-card">
+            <h3>Navigation built for behavior</h3>
+            <ul style="list-style:none; padding:0; margin-top:2rem; line-height:2.5; font-size:1.2rem;">
+              <li><strong>Home</strong> → prompts and reminders</li>
+              <li><strong>Timeline</strong> → revisit memories</li>
+              <li><strong>Events</strong> → upcoming moments</li>
+              <li><strong>Create</strong> → capture instantly</li>
+              <li><strong>Profile</strong> → relationships and control</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧪 ACT 6 — REALITY CHECK (TESTING) -->
+    <section id="act-6" class="knot-section" style="background:#050505;">
+      <div class="knot-container">
+        <span class="eyebrow" style="text-align:center;">Testing</span>
+        <h2 style="font-size:3rem; text-align:center; margin-bottom:4rem;">Where the system broke, and why</h2>
+
+        <div style="text-align:center; margin-bottom:6rem;" class="knot-tx">
+          <div class="huge-stat">21.1%</div>
+          <div class="stat-sub">Misclick rate in finding the Family Graph</div>
+        </div>
+
+        <div class="split-layout">
+          <div class="split-left knot-tx" style="position:static;">
+            <h3>Setup</h3>
+            <p>10 users · 9 tasks · Interactive prototype</p>
+            <h3 style="margin-top:2rem; color:green;">What worked</h3>
+            <p>Every task reached 100% completion.<br><em>But that wasn’t the full story.</em></p>
+          </div>
+          <div class="split-right">
+            <div class="knot-card knot-tx">
+              <h3 style="color:#ff3333;">Why this happened</h3>
+              <ul>
+                <li>Hidden under Profile</li>
+                <li>Not part of primary navigation</li>
+                <li>No onboarding guidance</li>
+              </ul>
+            </div>
+            <div class="knot-card knot-tx">
+              <h3 style="color:#3399ff;">What I changed</h3>
+              <ul>
+                <li>Introduced contextual coach marks</li>
+                <li>Highlighted entry points</li>
+                <li>Guided actions through FAB</li>
+              </ul>
+            </div>
+            <div class="knot-card knot-tx">
+              <h3 style="color:#33ff99;">Impact</h3>
+              <ul>
+                <li>Reduced confusion</li>
+                <li>Faster task completion</li>
+                <li>Stronger first-time experience</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="knot-tx" style="margin-top:6rem; text-align:center;">
+          <span class="eyebrow">Key Takeaway</span>
+          <p style="font-size:2rem; font-weight:700;">Usability isn’t about missing features,<br>it’s about visibility.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📊 ACT 7 — MARKET CONTEXT (STRATEGY) -->
+    <section id="act-7" class="knot-section">
+      <div class="knot-container split-layout">
+        <div class="split-left">
+          <span class="eyebrow">Market</span>
+          <h2>Where existing tools fall short</h2>
+          <p style="font-size:1.5rem; margin-top:2rem;">Each solves a part. None solve the experience.</p>
+        </div>
+        <div class="split-right">
+          <div class="knot-card knot-tx">
+            <h3>The landscape</h3>
+            <ul style="font-size:1.2rem; line-height:2.5; list-style:none; padding:0;">
+              <li>💬 Chat apps → <em>communication</em></li>
+              <li>🖼️ Photo apps → <em>storage</em></li>
+              <li>📅 Calendars → <em>scheduling</em></li>
+            </ul>
+          </div>
+          <div class="knot-card knot-tx" style="border-color:var(--knot-accent);">
+            <h3 style="color:var(--knot-accent);">What makes Knot different</h3>
+            <p style="font-size:1.2rem; line-height:2;">It connects:<br>
+              <strong>Memory + relationships + time</strong><br>
+              <strong>Privacy + structure + emotion</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🚀 ACT 8 — THE EXPERIENCE (PAYOFF) -->
+    <section id="act-8" class="knot-section" style="background:#0e0e0e;">
+      <div class="knot-container" style="text-align:center;">
+        <span class="eyebrow">Experience</span>
+        <h2 style="font-size:clamp(2.5rem, 5vw, 4rem); max-width:800px; margin:0 auto 3rem;">Where moments become
+          something to look forward to</h2>
+
+        <div class="knot-card knot-tx" style="max-width:1000px; margin:0 auto 4rem; text-align:left;">
+          <h3>What this enables</h3>
+          <ul style="font-size:1.2rem; line-height:2.5;">
+            <li>Moments are structured through time</li>
+            <li>Memories carry emotion, not just data</li>
+            <li>People and stories stay connected</li>
+          </ul>
+        </div>
+
+        <!-- UI Showcase Mockups -->
+        <div class="knot-mockup-wrapper">
+          <img src="/assets/images/timeline-mockup.png" alt="UI Placeholder 1" class="knot-mockup">
+        </div>
+        <div class="knot-tx"
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(800px, 1fr)); gap:2rem; padding:2rem 0;">
+          <div class="knot-mockup-wrapper">
+            <img src="/assets/images/family-graph-mockup.png" alt="UI Placeholder 2" class="knot-mockup">
+          </div>
+          <div class="knot-mockup-wrapper">
+            <img src="/assets/images/events-mockup.png" alt="UI Placeholder 3" class="knot-mockup">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧠 ACT 9 — REFLECTION (MATURITY) -->
+    <section id="act-9" class="knot-section knot-fullscreen">
+      <div class="knot-container" style="text-align:center;">
+        <span class="eyebrow">Learnings</span>
+        <h2 class="knot-tx" style="font-size:2.5rem; margin-bottom:2rem;">Emotion matters more than efficiency</h2>
+        <h2 class="knot-tx" style="font-size:2.5rem; margin-bottom:2rem;">Visibility matters more than features</h2>
+        <h2 class="knot-tx" style="font-size:2.5rem; margin-bottom:6rem;">Systems matter more than screens</h2>
+      </div>
+    </section>
+
+    <!-- 🎯 FINAL STATEMENT (CLOSURE) -->
+    <section id="act-10" class="knot-section knot-fullscreen" style="background:#000;">
+      <div class="knot-container">
+        <div class="final-statement knot-tx">
+          Knot isn’t designed to capture more.
+        </div>
+        <div class="final-statement knot-tx" style="margin-top:2rem; color:var(--knot-accent);">
+          It’s designed to help people<br><span class="circle-highlight" style="color: #fff;">remember better.</span>
+        </div>
+
+        <div style="text-align:center; margin-top:8rem;">
+          <a href="https://www.behance.net/gallery/247113621/knot-Where-Moments-Became-Memories-UXUI-Case-study"
+            target="_blank" rel="noopener noreferrer" class="knot-tx"
+            style="display:inline-flex; align-items:center; gap:10px; background:#0057ff; color:#fff; font-size:1.1rem; font-weight:600; padding:16px 32px; border-radius:50px; text-decoration:none; transition:0.3s; box-shadow:0 8px 20px rgba(0,87,255,0.2);">
+            View full case study on Behance ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact-subfooter"
+    style="padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="subfooter-left">
+      <span style="color: #666; font-size: 14px;">© 2026 Surya Arunachalam. Designed & built by me</span>
+    </div>
+  </footer>
+
+  <!-- 10. AI CHATBOT UI -->
+  <div id="ai-chatbot" class="chatbot-wrapper">
+    <!-- Floating Avatar CTA -->
+    <div class="chatbot-cta-wrapper">
+      <div class="cta-tooltip-bubble">Ask about this project 💬</div>
+      <button id="chatbot-toggle" class="chatbot-toggle-avatar">
+        <img src="./assets/images/ai-bot.png" alt="AI Agent" class="bot-avatar-img" />
+      </button>
+    </div>
+
+    <!-- Chat Panel -->
+    <div id="chatbot-panel" class="chatbot-panel hidden">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <span class="bot-icon">✨</span>
+          <div>
+            <h4>Case Study AI</h4>
+            <p>Ask anything about Knot</p>
+          </div>
+        </div>
+        <button id="chatbot-close" class="chatbot-close">&times;</button>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <!-- Initial Bot Message -->
+        <div class="message bot-message">
+          <div class="msg-content">
+            Hey! I'm an AI assistant trained on Surya's design process for Knot. What would you like to know?
+          </div>
+        </div>
+        <!-- Suggested Prompts -->
+        <div class="suggested-prompts" id="suggested-prompts">
+          <button class="prompt-pill">Why timeline over feed?</button>
+          <button class="prompt-pill">What was the biggest challenge?</button>
+          <button class="prompt-pill">How did you validate decisions?</button>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type your question..." autocomplete="off" />
+        <button id="chat-send" aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="resume-icon-svg" stroke="#fff"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Inverted Cursor -->
+  <div class="knot-cursor"></div>
+
+  <script src="./chatbot.js" type="module"></script>
+  <!-- Initialize the new GSAP Scrollytelling behavior -->
+  <script src="./knot.js" type="module"></script>
+</body>
+
+</html>
