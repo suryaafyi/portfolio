@@ -1,5 +1,17 @@
 import { defineConfig } from 'vite';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
-  // Left blank because the user is running an external Express server
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        knot: resolve(__dirname, 'knot.html')
+      }
+    }
+  }
 });
