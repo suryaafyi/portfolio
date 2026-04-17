@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./knot.css">
   <link rel="stylesheet" href="./chatbot.css">
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 
 <body class="knot-cinematic">
@@ -385,9 +386,9 @@
   <div id="ai-chatbot" class="chatbot-wrapper">
     <!-- Floating Avatar CTA -->
     <div class="chatbot-cta-wrapper">
-      <div class="cta-tooltip-bubble">Ask about this project 💬</div>
       <button id="chatbot-toggle" class="chatbot-toggle-avatar">
-        <img src="./assets/images/ai-bot.png" alt="AI Agent" class="bot-avatar-img" />
+        <dotlottie-player src="/assets/images/chatbot.lottie" background="transparent" speed="1"
+          style="width: 100%; height: 100%;" loop autoplay></dotlottie-player>
       </button>
     </div>
 
@@ -395,9 +396,9 @@
     <div id="chatbot-panel" class="chatbot-panel hidden">
       <div class="chat-header">
         <div class="chat-header-info">
-          <span class="bot-icon">✨</span>
+          <!-- <span class="bot-icon">✨</span> -->
           <div>
-            <h4>Case Study AI</h4>
+            <h4 style="font-family: 'Playfair Display', serif;">I'm Ava</h4>
             <p>Ask anything about Knot</p>
           </div>
         </div>
