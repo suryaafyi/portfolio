@@ -46,7 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       setTimeout(() => {
-        window.open(url, '_blank');
+        if (card.getAttribute('target') === '_blank') {
+          window.open(url, '_blank');
+        } else {
+          window.location.href = url;
+        }
       }, 150);
     });
   });
